@@ -1,0 +1,287 @@
+<div class="bg-card flex min-w-0 flex-auto flex-col dark:bg-transparent sm:absolute sm:inset-0 sm:overflow-hidden">
+      <!-- Header -->
+      <div
+            class="relative flex flex-0 flex-col border-b px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-8">
+            <!-- Loader -->
+            <!-- @if (isLoading) {
+            <div class="absolute inset-x-0 bottom-0">
+                <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+            </div>
+        } -->
+            <!-- Title -->
+            <div class="text-4xl font-extrabold tracking-tight">Table</div>
+            <!-- Actions -->
+            <div class="mt-6 flex shrink-0 items-center sm:ml-4 sm:mt-0">
+                  <!-- Search -->
+                  <mat-form-field class="empower-mat-dense empower-mat-rounded min-w-64" [subscriptSizing]="'dynamic'">
+                        <mat-icon class="icon-size-5" matPrefix
+                              [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+                        <input matInput [autocomplete]="'off'" [placeholder]="'Search products'" />
+                  </mat-form-field>
+                  <!--  Add -->
+                  <button class="ml-4 min-w-10 px-1 sm:px-4" mat-flat-button [color]="'primary'">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
+                        <span class="ml-2 hidden sm:inline-block">New Client</span>
+                  </button>
+            </div>
+      </div>
+
+      <div class="flex-auto">
+            <div>
+              <!-- Advanced search form -->
+              <form
+                class="bg-card flex w-full flex-col items-start space-y-3 overflow-hidden rounded-2xl p-5 shadow">
+                <!-- Form Fields in Two Columns -->
+                <div class="grid grid-cols-2 gap-4 w-full">
+                  <!-- Keywords -->
+                  <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+                    <mat-label>Keywords</mat-label>
+                    <input [autocomplete]="'off'" matInput />
+                  </mat-form-field>
+          
+                  <!-- Type -->
+                  <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+                    <mat-label>Type</mat-label>
+                    <mat-select>
+                      <mat-option [value]="'any'">Any</mat-option>
+                      <mat-option [value]="'files'">Files</mat-option>
+                      <mat-option [value]="'folders'">Folders</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+          
+                  <!-- Keywords 2 -->
+                  <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+                    <mat-label>Keywords 2</mat-label>
+                    <input [autocomplete]="'off'" matInput />
+                  </mat-form-field>
+          
+                  <!-- Type 2 -->
+                  <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+                    <mat-label>Type 2</mat-label>
+                    <mat-select>
+                      <mat-option [value]="'any'">Any</mat-option>
+                      <mat-option [value]="'files'">Files</mat-option>
+                      <mat-option [value]="'folders'">Folders</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+          
+                <!-- Actions -->
+                <!-- <div class="mt-8 flex w-full items-center justify-end">
+                  <button type="button" mat-button>
+                    Reset
+                  </button>
+                  <button class="ml-2" [color]="'primary'" type="button" mat-flat-button>
+                    Search
+                  </button>
+                </div> -->
+              </form>
+            </div>
+          </div>
+          
+
+      <!-- Main -->
+      <div class="flex flex-auto overflow-hidden">
+            <!-- Products list -->
+            <div class="flex flex-auto flex-col overflow-hidden sm:mb-18 sm:overflow-y-auto">
+                  @if (true) {
+                  @if (true) {
+                  <div class="grid w-full grid-cols-1 gap-8 xl:grid-cols-3">
+                        <!-- Recent transactions table -->
+                        <div class="bg-card flex flex-auto flex-col overflow-hidden rounded-2xl shadow xl:col-span-3">
+                              <div class="p-6">
+                                    <div class="mr-4 truncate text-lg font-medium leading-6 tracking-tight">
+                                          Recent transactions
+                                    </div>
+                                    <div class="text-secondary font-medium">
+                                          1 pending, 4 completed
+                                    </div>
+                              </div>
+                              <div class="mx-6 overflow-x-auto">
+                                    <table class="w-full bg-transparent" mat-table matSort
+                                          [dataSource]="recentTransactionsDataSource" [trackBy]="trackByFn"
+                                          #recentTransactionsTable>
+                                          <!-- Transaction ID -->
+                                          <ng-container matColumnDef="transactionId">
+                                                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                                                      Transaction ID
+                                                </th>
+                                                <td mat-cell *matCellDef="let transaction">
+                                                      <span
+                                                            class="text-secondary whitespace-nowrap pr-6 text-sm font-medium">
+                                                            {{ transaction.transactionId }}
+                                                      </span>
+                                                </td>
+                                          </ng-container>
+
+                                          <!-- Date -->
+                                          <ng-container matColumnDef="date">
+                                                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                                                      Date
+                                                </th>
+                                                <td mat-cell *matCellDef="let transaction">
+                                                      <span class="whitespace-nowrap pr-6">
+                                                            {{
+                                                            transaction.date
+                                                            | date: 'MMM dd, y'
+                                                            }}
+                                                      </span>
+                                                </td>
+                                          </ng-container>
+
+                                          <!-- Name -->
+                                          <ng-container matColumnDef="name">
+                                                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                                                      Name
+                                                </th>
+                                                <td mat-cell *matCellDef="let transaction">
+                                                      <span class="whitespace-nowrap pr-6">
+                                                            {{ transaction.name }}
+                                                      </span>
+                                                </td>
+                                          </ng-container>
+
+                                          <!-- Amount -->
+                                          <ng-container matColumnDef="amount">
+                                                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                                                      Amount
+                                                </th>
+                                                <td mat-cell *matCellDef="let transaction">
+                                                      <span class="whitespace-nowrap pr-6 font-medium">
+                                                            {{
+                                                            transaction.amount
+                                                            | currency: 'USD'
+                                                            }}
+                                                      </span>
+                                                </td>
+                                          </ng-container>
+
+                                          <!-- Status -->
+                                          <ng-container matColumnDef="status">
+                                                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                                                      Status
+                                                </th>
+                                                <td mat-cell *matCellDef="let transaction">
+                                                      <!-- <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide"
+                                                            [ngClass]="{
+                                                    'bg-red-200 text-red-800 dark:bg-red-600 dark:text-red-50':
+                                                        transaction.status === 'pending',
+                                                    'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-50':
+                                                        transaction.status === 'completed',
+                                                }">
+                                                            <span class="whitespace-nowrap leading-relaxed">{{
+                                                                  transaction.status }}</span>
+                                                      </span> -->
+                                                      <!-- Actions -->
+                                                      <div class="mt-6 flex shrink-0 items-center sm:ml-4 sm:mt-0">
+                                                            <button mat-stroked-button>
+                                                                  <mat-icon class="icon-size-4"
+                                                                        [svgIcon]="'heroicons_mini:pencil-square'"></mat-icon>
+                                                            </button>
+                                                            <button class="ml-3" mat-flat-button [color]="'primary'">
+                                                                  <mat-icon class="icon-size-4"
+                                                                        [svgIcon]="'heroicons_mini:link'"></mat-icon>
+                                                            </button>
+                                                      </div>
+                                                      <!-- <button class="-mr-4 ml-auto" mat-icon-button [matMenuTriggerFor]="
+                                                    postCardMenu02
+                                                ">
+                                                            <mat-icon class="icon-size-5" [svgIcon]="
+                                                        'heroicons_solid:ellipsis-vertical'
+                                                    "></mat-icon>
+                                                      </button>
+                                                      <mat-menu #postCardMenu02="matMenu">
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:arrow-up-tray'
+                                                            "></mat-icon>
+                                                                        <span>Save post</span>
+                                                                  </span>
+                                                            </button>
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:eye-slash'
+                                                            "></mat-icon>
+                                                                        <span>Hide post</span>
+                                                                  </span>
+                                                            </button>
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:clock'
+                                                            "></mat-icon>
+                                                                        <span>Snooze for 30
+                                                                              days</span>
+                                                                  </span>
+                                                            </button>
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:minus-circle'
+                                                            "></mat-icon>
+                                                                        <span>Hide all</span>
+                                                                  </span>
+                                                            </button>
+                                                            <mat-divider class="my-2"></mat-divider>
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:exclamation-triangle'
+                                                            "></mat-icon>
+                                                                        <span>Report post</span>
+                                                                  </span>
+                                                            </button>
+                                                            <button mat-menu-item>
+                                                                  <span class="flex items-center">
+                                                                        <mat-icon class="mr-3 icon-size-5" [svgIcon]="
+                                                                'heroicons_solid:bell'
+                                                            "></mat-icon>
+                                                                        <span>Turn on
+                                                                              notifications for
+                                                                              this post</span>
+                                                                  </span>
+                                                            </button>
+                                                      </mat-menu> -->
+                                                </td>
+                                          </ng-container>
+
+                                          <!-- Footer -->
+                                          <ng-container matColumnDef="recentOrdersTableFooter">
+                                                <td class="border-0 px-0 py-6" mat-footer-cell *matFooterCellDef
+                                                      colspan="6">
+                                                      <mat-divider></mat-divider>
+                                                </td>
+                                          </ng-container>
+
+                                          <tr mat-header-row *matHeaderRowDef="
+                                            recentTransactionsTableColumns
+                                        "></tr>
+                                          <tr class="order-row h-16" mat-row *matRowDef="
+                                            let row;
+                                            columns: recentTransactionsTableColumns
+                                        "></tr>
+                                          <tr class="h-16 border-0" mat-footer-row *matFooterRowDef="[
+                                            'recentOrdersTableFooter',
+                                        ]"></tr>
+                                    </table>
+
+                                    <mat-paginator
+                                          class="z-10 border-b bg-gray-50 dark:bg-transparent sm:absolute sm:inset-x-0 sm:bottom-0 sm:border-b-0 sm:border-t"
+                                          [ngClass]="{
+                                        'pointer-events-none': isLoading,
+                                    }" [pageSizeOptions]="[5, 10, 25, 100]"
+                                          [showFirstLastButtons]="true"></mat-paginator>
+                              </div>
+                        </div>
+                  </div>
+                  } @else {
+                  <div class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16">
+                        There are no products!
+                  </div>
+                  }
+                  }
+            </div>
+      </div>
+</div>

@@ -1,0 +1,25 @@
+<!-- Flippable card -->
+@if (flippable) {
+    <!-- Front -->
+    <div class="empower-card-front">
+        <ng-content select="[empowerCardFront]"></ng-content>
+    </div>
+
+    <!-- Back -->
+    <div class="empower-card-back">
+        <ng-content select="[empowerCardBack]"></ng-content>
+    </div>
+}
+
+<!-- Normal card -->
+@if (!flippable) {
+    <!-- Content -->
+    <ng-content></ng-content>
+
+    <!-- Expansion -->
+    @if (expanded) {
+        <div class="empower-card-expansion" [@expandCollapse]>
+            <ng-content select="[empowerCardExpansion]"></ng-content>
+        </div>
+    }
+}
