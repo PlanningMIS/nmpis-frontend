@@ -4,6 +4,10 @@ import { SampleCollectionComponent } from './sample-collection/sample-collection
 import { RejectedSampleComponent } from './rejected-sample/rejected-sample.component';
 import { SampleAnalysisComponent } from './sample-analysis/sample-analysis.component';
 import { SampleResultsComponent } from './sample-results/sample-results.component';
+import { HistopathologyComponent } from './sample-analysis/histopathology/histopathology.component';
+import { ParasitologyComponent } from './sample-analysis/parasitology/parasitology.component';
+import { HaematologyComponent } from './sample-analysis/haematology/haematology.component';
+import { ClinicalChemistryComponent } from './sample-analysis/clinical-chemistry/clinical-chemistry.component';
 
 export default [
     {
@@ -22,6 +26,22 @@ export default [
     {
         path: 'sample-analysis',
         component: SampleAnalysisComponent,
+    },
+    {
+        path: 'histopathology',
+        component: HistopathologyComponent,
+    },
+    {
+        path: 'parasitology',
+        component: ParasitologyComponent,
+    },
+    {
+        path: 'haematology',
+        component: HaematologyComponent,
+    },
+    {
+        path: 'chemistry',
+        component: ClinicalChemistryComponent,
     },
     {
         path: 'sample-results',

@@ -3,12 +3,12 @@ import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    inject,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,45 +22,47 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { empowerCardComponent } from '@empower/components/card';
 import { Subject } from 'rxjs';
-
+import { RequestingFacilityDialog } from '../dialog/requesting-facility/requesting-facility.component';
+import { BillingInfoDialog } from '../dialog/billing-info/billing-info.component';
 
 @Component({
-  selector: 'app-client-profile',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-      RouterLink,
-      empowerCardComponent,
-      MatIconModule,
-      MatButtonModule,
-      MatMenuModule,
-      MatFormFieldModule,
-      MatInputModule,
-      TextFieldModule,
-      MatDividerModule,
-      MatTooltipModule,
-      MatTableModule,
-      MatPaginatorModule,
-      MatSortModule,
-      NgClass,
-      MatProgressBarModule,
-      CurrencyPipe,
-      DatePipe,
-  ],
-  templateUrl: './client-profile.component.html',
-  styleUrl: './client-profile.component.scss'
+    selector: 'app-client-profile',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        RouterLink,
+        empowerCardComponent,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        TextFieldModule,
+        MatDividerModule,
+        MatTooltipModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        NgClass,
+        MatProgressBarModule,
+        CurrencyPipe,
+        DatePipe,
+    ],
+    templateUrl: './client-profile.component.html',
+    styleUrl: './client-profile.component.scss',
 })
-
 export class ClientProfileComponent {
-     @ViewChild(MatPaginator) private _paginator: MatPaginator;
-      @ViewChild('recentTransactionsTable', { read: MatSort })
-    
-      recentTransactionsTableMatSort: MatSort;
-      data: any;
-    
-        //TEMPORARY
-      finance: any = {
+    @ViewChild(MatPaginator) private _paginator: MatPaginator;
+    @ViewChild('recentTransactionsTable', { read: MatSort })
+    recentTransactionsTableMatSort: MatSort;
+    data: any;
+
+    readonly dialog = inject(MatDialog);
+
+
+    //TEMPORARY
+    finance: any = {
         recentTransactions: [
             {
                 id: '1b6fd296-bc6a-4d45-bf4f-e45519a58cf5',
@@ -102,74 +104,94 @@ export class ClientProfileComponent {
                 status: 'completed',
                 date: '2019-11-24T12:13:23.064Z',
             },
-          
         ],
     };
-    
-    
-        recentTransactionsDataSource: MatTableDataSource<any> =
-            new MatTableDataSource();
-        recentTransactionsTableColumns: string[] = [
-            'transactionId',
-            'date',
-            'name',
-            'amount',
-            'status',
-        ];
-        private _unsubscribeAll: Subject<any> = new Subject<any>();
-    
+
+    recentTransactionsDataSource: MatTableDataSource<any> =
+        new MatTableDataSource();
+    recentTransactionsTableColumns: string[] = [
+        'transactionId',
+        'date',
+        'name',
+        'amount',
+        'status',
+    ];
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
+
+    /**
+     * Constructor
+     */
+    constructor() {}
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void {
+        this.data = this.finance;
+
+        // Store the table data
+        this.recentTransactionsDataSource.data = this.data.recentTransactions;
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void {
+        // Make the data source sortable
+        this.recentTransactionsDataSource.sort =
+            this.recentTransactionsTableMatSort;
+
+        this.recentTransactionsDataSource.paginator = this._paginator;
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any {
+        return item.id || index;
+    }
+
+    /**
+     * Open Requesting Fac dialog
+     */
+    addRequestingFac() {
+        // Open the dialog
+        this.dialog.open(RequestingFacilityDialog, {
+            autoFocus: false,
+            panelClass: 'empower-confirmation-dialog-panel',
+        });
+    }
+
         /**
-         * Constructor
-         */
-        constructor() {}
-    
-        // -----------------------------------------------------------------------------------------------------
-        // @ Lifecycle hooks
-        // -----------------------------------------------------------------------------------------------------
-    
-        /**
-         * On init
-         */
-        ngOnInit(): void {
-            this.data = this.finance;
-    
-            // Store the table data
-            this.recentTransactionsDataSource.data =
-                this.data.recentTransactions;
+     * Open Billing Info dialog
+     */
+        addBillingInfo() {
+            // Open the dialog
+            this.dialog.open(BillingInfoDialog, {
+                autoFocus: false,
+                panelClass: 'empower-confirmation-dialog-panel',
+            });
         }
-    
-        /**
-         * After view init
-         */
-        ngAfterViewInit(): void {
-            // Make the data source sortable
-            this.recentTransactionsDataSource.sort =
-                this.recentTransactionsTableMatSort;
-    
-            this.recentTransactionsDataSource.paginator = this._paginator;
-        
-        }
-    
-        /**
-         * On destroy
-         */
-        ngOnDestroy(): void {
-            // Unsubscribe from all subscriptions
-            this._unsubscribeAll.next(null);
-            this._unsubscribeAll.complete();
-        }
-    
-        // -----------------------------------------------------------------------------------------------------
-        // @ Public methods
-        // -----------------------------------------------------------------------------------------------------
-    
-        /**
-         * Track by function for ngFor loops
-         *
-         * @param index
-         * @param item
-         */
-        trackByFn(index: number, item: any): any {
-            return item.id || index;
-        }
+
+
 }

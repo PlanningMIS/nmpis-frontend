@@ -23,8 +23,7 @@
               <div
                   class="mt-4 flex flex-col items-center lg:ml-8 lg:mt-0 lg:items-start"
               >
-                  <div class="text-lg font-bold leading-none">Brian Hughes</div>
-                  <div class="text-secondary">London, UK</div>
+                  <div class="text-lg font-bold leading-none">Tmaris Muya</div>
               </div>
   
               <!-- Separator -->
@@ -33,15 +32,15 @@
               <!-- Stats -->
               <div class="mt-6 flex items-center space-x-6 lg:mt-0">
                   <div class="flex flex-col items-center">
-                      <span class="font-bold">200k</span>
+                      <span class="font-bold">28</span>
                       <span class="text-secondary text-sm font-medium"
-                          >FOLLOWERS</span
+                          >AGE</span
                       >
                   </div>
                   <div class="flex flex-col items-center">
-                      <span class="font-bold">1.2k</span>
+                      <span class="font-bold">Male</span>
                       <span class="text-secondary text-sm font-medium"
-                          >FOLLOWING</span
+                          >GENDER</span
                       >
                   </div>
               </div>
@@ -50,10 +49,12 @@
               <div
                   class="mb-4 mt-8 flex items-center space-x-6 lg:m-0 lg:ml-auto"
               >
-                  <a class="font-medium" [routerLink]="['./']"> Home </a>
-                  <a class="text-secondary" [routerLink]="['./']"> About </a>
-                  <a class="text-secondary" [routerLink]="['./']"> Followers </a>
-                  <a class="text-secondary" [routerLink]="['./']"> Gallery </a>
+                  <button mat-flat-button (click)="addRequestingFac()" [color]="'primary'">
+                    Requesting Facility
+                  </button>
+                  <button mat-flat-button (click)="addBillingInfo()" [color]="'primary'">
+                    Add Billing Info
+                  </button>
               </div>
           </div>
       </div>
@@ -66,14 +67,7 @@
           <div class="mr-8 hidden flex-col items-start lg:flex">
               <!-- About me -->
               <empower-card class="flex w-full max-w-80 flex-col p-8">
-                  <div class="text-2xl font-semibold leading-tight">About Me</div>
-                  <div class="mt-4">
-                      I’m a friendly kitchen assistant who suffers from a severe
-                      phobia of buttons.
-                      <br /><br />
-                      Brother of Elijah Jay Watkins, who has phobia of buttons and
-                      trust issues.
-                  </div>
+                  <div class="text-2xl font-semibold leading-tight">About</div>
                   <hr class="my-6 w-full border-t" />
                   <div class="flex flex-col">
                       <div class="flex items-center">
@@ -100,14 +94,6 @@
                           <span class="leading-none">April, 24</span>
                       </div>
                   </div>
-                  <a
-                      class="mt-8 px-6"
-                      mat-flat-button
-                      [color]="'primary'"
-                      [routerLink]="['./']"
-                  >
-                      See complete bio
-                  </a>
               </empower-card>
   
               <!-- News -->
@@ -138,8 +124,7 @@
                               [svgIcon]="'heroicons_solid:bell'"
                           ></mat-icon>
                           <div>
-                              <b>20% OFF</b> in your favorite hats shop on next
-                              Friday.
+                              <b>Payment</b> is not done yet
                           </div>
                       </div>
                       <div class="mt-5 flex">

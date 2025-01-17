@@ -88,7 +88,9 @@ export const appRoutes: Route[] = [
             // Apps
             {path: 'apps', children: [
                 {path: 'clients', loadChildren: () => import('app/modules/admin/apps/clients/clients.routes')},
+                {path: 'billing', loadChildren: () => import('app/modules/admin/apps/billing/billing.routes')},
                 {path: 'laboratory', loadChildren: () => import('app/modules/admin/apps/lab-sample-centric/lab-sample-centric.routes')},
+                {path: 'consultation', loadChildren: () => import('app/modules/admin/apps/consultation/consultation.routes')},
                 {path: 'academy', loadChildren: () => import('app/modules/admin/apps/academy/academy.routes')},
                 {path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.routes')},
                 {path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.routes')},
