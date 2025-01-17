@@ -33,6 +33,13 @@ export const defaultNavigation: EmpowerNavigationItem[] = [
         icon: 'heroicons_outline:home',
         children: [
             {
+                id: 'apps.clients',
+                title: 'Clients',
+                type: 'basic',
+                icon: 'heroicons_outline:academic-cap',
+                link: '/apps/clients',
+            },
+            {
                 id: 'apps.academy',
                 title: 'Academy',
                 type: 'basic',
