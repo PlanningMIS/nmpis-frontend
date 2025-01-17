@@ -36,8 +36,47 @@ export const defaultNavigation: EmpowerNavigationItem[] = [
                 id: 'apps.clients',
                 title: 'Clients',
                 type: 'basic',
-                icon: 'heroicons_outline:academic-cap',
+                icon: 'heroicons_outline:user-group',
                 link: '/apps/clients',
+            },
+            {
+                id: 'apps.labSample',
+                title: 'Lab Sample Centric',
+                type: 'collapsable',
+                icon: 'heroicons_outline:beaker',
+                children: [
+                    {
+                        id: 'pages.labSample.collection',
+                        title: 'Sample Collection',
+                        type: 'collapsable',
+                        children: [
+                            {
+                                id: 'apps.labSample.sample',
+                                title: 'Sample',
+                                type: 'basic',
+                                link: '/apps/laboratory/sample',
+                            },
+                            {
+                                id: 'apps.labSample.rejected',
+                                title: 'Rejected Sample',
+                                type: 'basic',
+                                link: '/apps/laboratory/rejected-sample',
+                            },
+                        ],
+                    },
+                    {
+                        id: 'apps.labSample.analysis',
+                        title: 'Sample Analysis',
+                        type: 'basic',
+                        link: '/apps/laboratory/sample-analysis',
+                    },
+                    {
+                        id: 'apps.labSample.result',
+                        title: 'Sample Results',
+                        type: 'basic',
+                        link: '/apps/laboratory/sample-results',
+                    },
+                ],
             },
             {
                 id: 'apps.academy',
