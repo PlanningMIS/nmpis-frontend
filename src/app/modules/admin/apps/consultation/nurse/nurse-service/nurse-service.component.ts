@@ -57,23 +57,29 @@ export class NurseServiceComponent implements OnInit {
         // Horizontal stepper form
         this.horizontalStepperForm = this._formBuilder.group({
             step1: this._formBuilder.group({
-                email: ['', [Validators.required, Validators.email]],
-                country: ['', Validators.required],
-                language: ['', Validators.required],
+                weight: ['', Validators.required],
+                height: ['', Validators.required],
+                bmi: ['', Validators.required],
+                pulseRate: ['', Validators.required],
+                systolic: ['', Validators.required],
+                diastolic: ['', Validators.required],
+                temperature: ['', Validators.required],
+                respirationRate: ['', Validators.required],
+                nursingNotes: ['', Validators.required],
             }),
             step2: this._formBuilder.group({
-                firstName: ['', Validators.required],
-                lastName: ['', Validators.required],
-                userName: ['', Validators.required],
-                about: [''],
+                medicationType: ['', Validators.required],
+                drugFrequency: ['', Validators.required],
+                drugDose: ['', Validators.required],
+                consumableUsed: [''],
+                consumableQuantity: [''],
+                nursingNotes2: [''],
             }),
             step3: this._formBuilder.group({
-                byEmail: this._formBuilder.group({
-                    companyNews: [true],
-                    featuredProducts: [false],
-                    messages: [true],
-                }),
-                pushNotifications: ['everything', Validators.required],
+                medicationType2: ['', Validators.required],
+                consumableUsed2: ['', Validators.required],
+                consumableQuantity2: ['', Validators.required],
+                nursingNotes3: [''],
             }),
         });
       }

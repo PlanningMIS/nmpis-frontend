@@ -138,6 +138,58 @@ export const defaultNavigation: EmpowerNavigationItem[] = [
         type: 'divider',
     },
     {
+        id: 'admin',
+        title: 'System Admin',
+        subtitle: 'Custom made application designs',
+        type: 'group',
+        icon: 'heroicons_outline:home',
+        children: [
+            {
+                id: 'admin.billing',
+                title: 'Billing',
+                type: 'collapsable',
+                icon: 'heroicons_outline:building-office-2',
+                children: [
+                    {
+                        id: 'apps.consultation.nurse',
+                        title: 'Payment Method',
+                        type: 'basic',
+                        link: '/admin/billing/payment-method',
+                    },
+                    {
+                        id: 'apps.consultation.doctor',
+                        title: 'Billing Category',
+                        type: 'basic',
+                        link: '/admin/billing/billing-category',
+                    },
+                    {
+                        id: 'apps.consultation.doctor',
+                        title: 'Billing Category Item',
+                        type: 'basic',
+                        link: '/admin/billing/billing-item-category',
+                    },
+                    {
+                        id: 'apps.consultation.doctor',
+                        title: 'Price',
+                        type: 'basic',
+                        link: '/admin/billing/price',
+                    },
+                ],
+            },
+            {
+                id: 'admin.settings',
+                title: 'Settings',
+                type: 'basic',
+                icon: 'heroicons_outline:cog-8-tooth',
+                link: '/pages/settings',
+            },
+        ],
+    },
+    {
+        id: 'divider-1',
+        type: 'divider',
+    },
+    {
         id: 'documentation',
         title: 'Documentation',
         subtitle: 'Everything you need to know about Empower',

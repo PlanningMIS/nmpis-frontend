@@ -57,24 +57,29 @@ export class DoctorServiceComponent implements OnInit {
         // Horizontal stepper form
         this.horizontalStepperForm = this._formBuilder.group({
             step1: this._formBuilder.group({
-                email: ['', [Validators.required, Validators.email]],
-                country: ['', Validators.required],
-                language: ['', Validators.required],
+                clientComplain: ['', Validators.required],
+                illnessHistory: ['', Validators.required],
+                medicalHistory: ['', Validators.required],
+                familyHistory: [''],
+                clientExamination: [''],
             }),
             step2: this._formBuilder.group({
-                firstName: ['', Validators.required],
-                lastName: ['', Validators.required],
-                userName: ['', Validators.required],
-                about: [''],
+                provisionalDiagnosis: ['', Validators.required],
+                diagnosis: ['', Validators.required],
+                doctorsNotes: ['', Validators.required],
             }),
             step3: this._formBuilder.group({
-                byEmail: this._formBuilder.group({
-                    companyNews: [true],
-                    featuredProducts: [false],
-                    messages: [true],
-                }),
-                pushNotifications: ['everything', Validators.required],
+                anotherDiagnostic: ['', Validators.required],
+                radiologyTest: ['', Validators.required],
+                laboratoryTest: ['', Validators.required],
             }),
+            step4: this._formBuilder.group({
+                treatmentPlan: ['', Validators.required],
+                conservativeManagement: ['', Validators.required],
+                consumableUsed: ['', Validators.required],
+                consumableQuantity: ['', Validators.required],
+            }),
+
         });
       }
 

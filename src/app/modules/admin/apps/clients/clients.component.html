@@ -25,16 +25,32 @@
             <div>
                   <!-- Advanced search form -->
                   <form
-                        class="bg-card flex w-full flex-col items-start space-y-3 overflow-hidden rounded-2xl p-5 shadow">
+                        class="bg-card flex w-full flex-col items-start space-y-3 overflow-hidden rounded-2xl p-5 shadow" [formGroup]="dateRangeForm">
                         <!-- Form Fields in Two Columns -->
                         <div class="grid grid-cols-2 gap-4 w-full">
-                              <!-- Search clients -->
+
+                              <!-- Start Date -->
+                              <mat-form-field appearance="fill">
+                                    <mat-label>Start Date</mat-label>
+                                    <input matInput [matDatepicker]="startPicker" formControlName="startDate" />
+                                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #startPicker></mat-datepicker>
+                              </mat-form-field>
+
+                              <!-- End Date -->
+                              <mat-form-field appearance="fill">
+                                    <mat-label>End Date</mat-label>
+                                    <input matInput [matDatepicker]="endPicker" formControlName="endDate" />
+                                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #endPicker></mat-datepicker>
+                                  </mat-form-field>
+
+                              <!-- Search client -->
                               <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
                                     <mat-icon class="icon-size-5" matPrefix
                                           [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
                                     <input matInput [autocomplete]="'off'" [placeholder]="'Search clients'" />
                               </mat-form-field>
-
                         </div>
                   </form>
             </div>
@@ -177,5 +193,24 @@
                   }
                   }
             </div>
+
+            <div class="fab-container">
+                  <button mat-fab color="primary" (click)="toggleFab()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                
+                  <div class="fab-buttons" [class.show]="fabOpen">
+                    <button mat-mini-fab color="accent">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="warn">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="primary">
+                      <mat-icon>share</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                
       </div>
 </div>

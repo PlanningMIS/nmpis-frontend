@@ -133,7 +133,7 @@
                               [svgIcon]="'heroicons_solid:bell'"
                           ></mat-icon>
                           <div>
-                              Upcoming meetups within 20 miles.
+                              Malaria test on progress
                               <a
                                   class="text-secondary whitespace-nowrap hover:underline"
                                   [routerLink]="['./']"
@@ -147,8 +147,7 @@
                               [svgIcon]="'heroicons_solid:bell'"
                           ></mat-icon>
                           <div>
-                              Concerts from your favorite bands available within
-                              100 miles.
+                              Has to go to x-ray room
                               <a
                                   class="text-secondary whitespace-nowrap hover:underline"
                                   [routerLink]="['./']"
@@ -253,13 +252,13 @@
                                mat-sort-header
                                *matHeaderCellDef
                            >
-                               Amount
+                               Test
                            </th>
                            <td mat-cell *matCellDef="let transaction">
                                <span
                                    class="whitespace-nowrap pr-6 font-medium"
                                >
-                                   {{ transaction.amount | currency: 'USD' }}
+                                   {{ transaction.amount }}
                                </span>
                            </td>
                        </ng-container>

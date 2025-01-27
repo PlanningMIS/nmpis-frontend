@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { FinanceService } from 'app/modules/admin/dashboards/finance/finance.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -52,8 +54,10 @@ const now = DateTime.now();
             NgClass,
             MatProgressBarModule,
             DatePipe,
+            MatDatepickerModule
   ],
   templateUrl: './clients.component.html',
+  providers: [provideNativeDateAdapter()],
   styleUrl: './clients.component.scss'
 })
 
@@ -74,7 +78,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
             name: 'Morgan Page',
             gender: 'Male',
             status: 'completed',
-            date: '2019-10-07T22:22:37.274Z',
+            date: '2025-10-07T22:22:37.274Z',
         },
         {
             id: '2dec6074-98bd-4623-9526-6480e4776569',
@@ -82,7 +86,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
             name: 'Nita Hebert',
             gender: 'Male',
             status: 'completed',
-            date: '2019-12-18T14:51:24.461Z',
+            date: '2025-12-18T14:51:24.461Z',
         },
         {
             id: 'ae7c065f-4197-4021-a799-7a221822ad1d',
@@ -90,7 +94,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
             name: 'Marsha Chambers',
             gender: 'Male',
             status: 'pending',
-            date: '2019-12-25T17:52:14.304Z',
+            date: '2025-12-25T17:52:14.304Z',
         },
         {
             id: '0c43dd40-74f6-49d5-848a-57a4a45772ab',
@@ -98,7 +102,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
             name: 'Charmaine Jackson',
             gender: 'Female',
             status: 'completed',
-            date: '2019-11-29T06:32:16.111Z',
+            date: '2025-11-29T06:32:16.111Z',
         },
         {
             id: 'e5c9f0ed-a64c-4bfe-a113-29f80b4e162c',
@@ -106,7 +110,31 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
             name: 'Maura Carey',
             gender: 'Female',
             status: 'completed',
-            date: '2019-11-24T12:13:23.064Z',
+            date: '2025-11-24T12:13:23.064Z',
+        },
+        {
+            id: 'ae7c065f-4197-4021-a799-7a221822ad1d',
+            transactionId: '685377421YT',
+            name: 'Mushi Kanzia',
+            gender: 'Male',
+            status: 'pending',
+            date: '2025-12-25T17:52:14.304Z',
+        },
+        {
+            id: '0c43dd40-74f6-49d5-848a-57a4a45772ab',
+            transactionId: '884960091RT',
+            name: 'Jasmine Jackson',
+            gender: 'Female',
+            status: 'completed',
+            date: '2025-11-29T06:32:16.111Z',
+        },
+        {
+            id: 'e5c9f0ed-a64c-4bfe-a113-29f80b4e162c',
+            transactionId: '361402213NT',
+            name: 'Maria Carezu',
+            gender: 'Female',
+            status: 'completed',
+            date: '2025-11-24T12:13:23.064Z',
         },
       
     ],
@@ -124,6 +152,11 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
     ];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
+    dateRangeForm: FormGroup;
+ 
+    filteredData: any[] = [];
+    
+
     /**
      * Constructor
      */
@@ -131,8 +164,13 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
         private router: Router,
         private _empowerConfirmationService: EmpowerConfirmationService,
         private _formBuilder: UntypedFormBuilder,
-
-    ) {}
+        private fb: FormBuilder
+    ) {
+        this.dateRangeForm = this.fb.group({
+            startDate: [null],
+            endDate: [null]
+          });
+    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -170,7 +208,11 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
                         }),
                     }),
                     dismissible: true,
-                });    
+                });   
+                
+                //filter by date
+                this.filteredData = this.finance; // Initially show all data
+
     }
 
     /**
@@ -208,6 +250,22 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
         return item.id || index;
     }
 
+    applyFilter(): void {
+        const { startDate, endDate } = this.dateRangeForm.value;
+    
+        if (startDate && endDate) {
+          this.filteredData = this.data.filter(item => {
+            const itemDate = new Date(item.date).getTime();
+            return (
+              itemDate >= new Date(startDate).getTime() &&
+              itemDate <= new Date(endDate).getTime()
+            );
+          });
+        } else {
+          this.filteredData = this.finance; // If no dates selected, show all data
+        }
+      }
+
         /**
      * Open confirmation dialog
      */
@@ -230,4 +288,11 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy{
     navigateToProfileClient(): void {
         this.router.navigate(['/apps/clients/client-profile']);
       }
+
+      fabOpen = false;
+
+      toggleFab() {
+        this.fabOpen = !this.fabOpen;
+      }
+  
 }

@@ -1,0 +1,68 @@
+<div
+    class="flex flex-row items-center justify-between hover:cursor-pointer text-lg font-medium bg-primary text-primary px-8 py-6">
+    <div class="text-white">
+        <div class="justify-self-end font-medium">
+            Full Name: Samjk Thomas
+        </div>
+        <div class="justify-self-end font-medium">
+            Test: Test Name Order
+        </div>
+    </div>
+    <div class="text-xl text-primary-300">Sample Collection</div>
+</div>
+<mat-dialog-content>
+    <form class="bg-card mt-8 flex flex-col overflow-hidden rounded-2xl p-8 pb-4 shadow">
+        <div class="gt-xs:flex-row flex flex-col">
+            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                <mat-label>Service</mat-label>
+                <mat-select [placeholder]="'Service'">
+                    <mat-option value="Service-1">Service 1</mat-option>
+                    <mat-option value="Service-2">Service 2</mat-option>
+                    <mat-option value="Service-3">Service 3</mat-option>
+                </mat-select>
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:question-mark-circle'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                <mat-label>Item</mat-label>
+                <mat-select [placeholder]="'Item'">
+                    <mat-option value="Item-1">Item 1</mat-option>
+                    <mat-option value="Item-2">Item 2</mat-option>
+                    <mat-option value="Item-3">Item 3</mat-option>
+                </mat-select>
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:question-mark-circle'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                <mat-label>Billing Item Category</mat-label>
+                <mat-select [placeholder]="'Billing Item Category'">
+                    <mat-option value="Item-1">Billing Item Category 1</mat-option>
+                    <mat-option value="Item-2">Billing Item Category 2</mat-option>
+                    <mat-option value="Item-3">Billing Item Category 3</mat-option>
+                </mat-select>
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:question-mark-circle'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                <input matInput  [placeholder]="'Price'" required />
+                <mat-icon class="icon-size-5" matPrefix
+                    [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+        </div>
+
+    </form>
+</mat-dialog-content>
+<!-- <button mat-button mat-dialog-close>Close</button> -->
+<div
+    class="flex items-center justify-center space-x-3 bg-gray-50 px-6 py-4 dark:bg-black dark:bg-opacity-10 sm:justify-end">
+    <!-- Cancel -->
+    <button mat-stroked-button [matDialogClose]="'cancelled'">
+        Cancel
+    </button>
+
+    <!-- Confirm -->
+    <button mat-flat-button [color]="'primary'" [matDialogClose]="'confirmed'">
+        Submit
+    </button>
+
+</div>

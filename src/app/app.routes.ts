@@ -10,7 +10,7 @@ import { LayoutComponent } from 'app/layout/layout.component';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/dashboards/project'
-    {path: '', pathMatch : 'full', redirectTo: 'dashboards/project'},
+    { path: '', pathMatch: 'full', redirectTo: 'dashboards/project' },
 
     // Redirect signed-in user to the '/dashboards/project'
     //
@@ -19,7 +19,7 @@ export const appRoutes: Route[] = [
     // location. This is a small convenience to keep all main routes together here on this file.
     {
         path: 'signed-in-redirect',
-        pathMatch : 'full',
+        pathMatch: 'full',
         redirectTo: 'dashboards/project'
     },
 
@@ -33,11 +33,11 @@ export const appRoutes: Route[] = [
             layout: 'empty'
         },
         children: [
-            {path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.routes')},
-            {path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.routes')},
-            {path: 'reset-password', loadChildren: () => import('app/modules/auth/reset-password/reset-password.routes')},
-            {path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.routes')},
-            {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.routes')}
+            { path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.routes') },
+            { path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.routes') },
+            { path: 'reset-password', loadChildren: () => import('app/modules/auth/reset-password/reset-password.routes') },
+            { path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.routes') },
+            { path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.routes') }
         ]
     },
 
@@ -51,8 +51,8 @@ export const appRoutes: Route[] = [
             layout: 'empty'
         },
         children: [
-            {path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.routes')},
-            {path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.routes')}
+            { path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.routes') },
+            { path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.routes') }
         ]
     },
 
@@ -64,7 +64,7 @@ export const appRoutes: Route[] = [
             layout: 'empty'
         },
         children: [
-            {path: 'home', loadChildren: () => import('app/modules/landing/home/home.routes')},
+            { path: 'home', loadChildren: () => import('app/modules/landing/home/home.routes') },
         ]
     },
 
@@ -80,82 +80,107 @@ export const appRoutes: Route[] = [
         children: [
 
             // Dashboards
-            {path: 'dashboards', children: [
-                {path: 'project', loadChildren: () => import('app/modules/admin/dashboards/project/project.routes')},
-                {path: 'finance', loadChildren: () => import('app/modules/admin/dashboards/finance/finance.routes')},
-            ]},
+            {
+                path: 'dashboards', children: [
+                    { path: 'project', loadChildren: () => import('app/modules/admin/dashboards/project/project.routes') },
+                    { path: 'finance', loadChildren: () => import('app/modules/admin/dashboards/finance/finance.routes') },
+                ]
+            },
+
+            // ADMIN
+            {
+                path: 'admin', children: [
+                    // Billing
+                    { path: 'billing', loadChildren: () => import('app/modules/admin/system-admin/billing/billing.routes') },
+                ]
+            },
+
 
             // Apps
-            {path: 'apps', children: [
-                {path: 'clients', loadChildren: () => import('app/modules/admin/apps/clients/clients.routes')},
-                {path: 'billing', loadChildren: () => import('app/modules/admin/apps/billing/billing.routes')},
-                {path: 'laboratory', loadChildren: () => import('app/modules/admin/apps/lab-sample-centric/lab-sample-centric.routes')},
-                {path: 'consultation', loadChildren: () => import('app/modules/admin/apps/consultation/consultation.routes')},
-                {path: 'academy', loadChildren: () => import('app/modules/admin/apps/academy/academy.routes')},
-                {path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.routes')},
-                {path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.routes')},
-                {path: 'file-manager', loadChildren: () => import('app/modules/admin/apps/file-manager/file-manager.routes')},
-            ]},
+            {
+                path: 'apps', children: [
+                    { path: 'clients', loadChildren: () => import('app/modules/admin/apps/clients/clients.routes') },
+                    { path: 'billing', loadChildren: () => import('app/modules/admin/apps/billing/billing.routes') },
+                    { path: 'laboratory', loadChildren: () => import('app/modules/admin/apps/lab-sample-centric/lab-sample-centric.routes') },
+                    { path: 'consultation', loadChildren: () => import('app/modules/admin/apps/consultation/consultation.routes') },
+                    { path: 'academy', loadChildren: () => import('app/modules/admin/apps/academy/academy.routes') },
+                    { path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.routes') },
+                    { path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.routes') },
+                    { path: 'file-manager', loadChildren: () => import('app/modules/admin/apps/file-manager/file-manager.routes') },
+                ]
+            },
 
             // Pages
-            {path: 'pages', children: [
+            {
+                path: 'pages', children: [
 
-                // Error
-                {path: 'error', children: [
-                    {path: '404', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes')},
-                    {path: '500', loadChildren: () => import('app/modules/admin/pages/error/error-500/error-500.routes')}
-                ]},
+                    // Error
+                    {
+                        path: 'error', children: [
+                            { path: '404', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes') },
+                            { path: '500', loadChildren: () => import('app/modules/admin/pages/error/error-500/error-500.routes') }
+                        ]
+                    },
 
-                // Invoice
-                {path: 'invoice', children: [
-                    {path: 'printable', children: [
-                        {path: 'compact', loadChildren: () => import('app/modules/admin/pages/invoice/printable/compact/compact.routes')},
-                        {path: 'modern', loadChildren: () => import('app/modules/admin/pages/invoice/printable/modern/modern.routes')}
-                    ]}
-                ]},
+                    // Invoice
+                    {
+                        path: 'invoice', children: [
+                            {
+                                path: 'printable', children: [
+                                    { path: 'compact', loadChildren: () => import('app/modules/admin/pages/invoice/printable/compact/compact.routes') },
+                                    { path: 'modern', loadChildren: () => import('app/modules/admin/pages/invoice/printable/modern/modern.routes') }
+                                ]
+                            }
+                        ]
+                    },
 
-                // Maintenance
-                {path: 'maintenance', loadChildren: () => import('app/modules/admin/pages/maintenance/maintenance.routes')},
+                    // Maintenance
+                    { path: 'maintenance', loadChildren: () => import('app/modules/admin/pages/maintenance/maintenance.routes') },
 
-                // Profile
-                {path: 'profile', loadChildren: () => import('app/modules/admin/pages/profile/profile.routes')},
+                    // Profile
+                    { path: 'profile', loadChildren: () => import('app/modules/admin/pages/profile/profile.routes') },
 
-                // Settings
-                {path: 'settings', loadChildren: () => import('app/modules/admin/pages/settings/settings.routes')},
-            ]},
+                    // Settings
+                    { path: 'settings', loadChildren: () => import('app/modules/admin/pages/settings/settings.routes') },
+                ]
+            },
 
             // User Interface
-            {path: 'ui', children: [
+            {
+                path: 'ui', children: [
 
-                // Empower Components
-                {path: 'empower-components', loadChildren: () => import('app/modules/admin/ui/empower-components/empower-components.routes')},
+                    // Empower Components
+                    { path: 'empower-components', loadChildren: () => import('app/modules/admin/ui/empower-components/empower-components.routes') },
 
-                // Other Components
-                {path: 'other-components', loadChildren: () => import('app/modules/admin/ui/other-components/other-components.routes')},
+                    // Other Components
+                    { path: 'other-components', loadChildren: () => import('app/modules/admin/ui/other-components/other-components.routes') },
 
-                 // Cards
-                {path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.routes')},
+                    // Cards
+                    { path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.routes') },
 
-                // Forms
-                {path: 'forms', loadChildren: () => import('app/modules/admin/ui/forms/forms.routes')},
+                    // Forms
+                    { path: 'forms', loadChildren: () => import('app/modules/admin/ui/forms/forms.routes') },
 
-                // Icons
-                {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.routes')},
-            ]},
+                    // Icons
+                    { path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.routes') },
+                ]
+            },
 
             // Documentation
-            {path: 'docs', children: [
+            {
+                path: 'docs', children: [
 
-                // Changelog
-                {path: 'changelog', loadChildren: () => import('app/modules/admin/docs/changelog/changelog.routes')},
+                    // Changelog
+                    { path: 'changelog', loadChildren: () => import('app/modules/admin/docs/changelog/changelog.routes') },
 
-                // Guides
-                {path: 'guides', loadChildren: () => import('app/modules/admin/docs/guides/guides.routes')}
-            ]},
+                    // Guides
+                    { path: 'guides', loadChildren: () => import('app/modules/admin/docs/guides/guides.routes') }
+                ]
+            },
 
             // 404 & Catch all
-            {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes')},
-            {path: '**', redirectTo: '404-not-found'}
+            { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes') },
+            { path: '**', redirectTo: '404-not-found' }
         ]
     }
 ];

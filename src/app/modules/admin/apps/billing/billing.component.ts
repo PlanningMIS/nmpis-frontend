@@ -63,22 +63,22 @@ export class BillingComponent implements OnInit, OnDestroy{
         {
             id: '1b6fd296-bc6a-4d45-bf4f-e45519a58cf5',
             transactionId: '528651571NT',
-            name: 'Morgan Page',
-            gender: 'Male',
+            name: 'Test One',
+            amount: '1',
             date: '2019-10-07T22:22:37.274Z',
         },
         {
             id: '2dec6074-98bd-4623-9526-6480e4776569',
             transactionId: '421436904YT',
-            name: 'Nita Hebert',
-            gender: 'Male',
+            name: 'Test Two',
+            amount: '2',
             date: '2019-12-18T14:51:24.461Z',
         },
         {
             id: 'ae7c065f-4197-4021-a799-7a221822ad1d',
             transactionId: '685377421YT',
-            name: 'Marsha Chambers',
-            gender: 'Male',
+            name: 'Test Three',
+            amount: '1',
             date: '2019-12-25T17:52:14.304Z',
         },
     ],
@@ -123,7 +123,7 @@ export class BillingComponent implements OnInit, OnDestroy{
                 this.configForm = this._formBuilder.group({
                     title: 'Pay Bill',
                     message:
-                        'Are you sure you want to remove this client permanently? <span class="font-medium">This action cannot be undone!</span>',
+                        'Are you sure you want to pay? <span class="text-lg text-black font-medium">23,560</span>',
                     icon: this._formBuilder.group({
                         show: true,
                         name: 'heroicons_outline:exclamation-triangle',

@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatOptionModule } from '@angular/material/core';
+import { MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -29,11 +30,12 @@ import { MatSelectModule } from '@angular/material/select';
         MatOptionModule,
         MatChipsModule,
         MatDatepickerModule,
-        MatDialogTitle, 
+        MatRadioModule, 
         MatDialogContent, 
         MatDialogClose,
     ], 
   templateUrl: './collect-sample.component.html',
+  providers: [provideNativeDateAdapter()],
   styles: [
     `
         .empower-confirmation-dialog-panel {

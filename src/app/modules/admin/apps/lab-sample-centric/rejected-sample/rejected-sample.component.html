@@ -5,7 +5,8 @@
     <!-- Header -->
     <div
         class="dark relative flex-0 overflow-hidden bg-gray-200 px-4 py-8 sm:p-16"
-    >
+    > 
+     <h1 class="text-2xl text-warn font-bold italic">Rejected Sample</h1>
         
     </div>
 
@@ -55,7 +56,7 @@
                 </mat-form-field>
 
             </div>
-            <!-- Courses -->
+            <!-- Sample -->
             @if (this.filteredCourses.length) {
                 <div
                     class="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3"
@@ -99,7 +100,7 @@
                                                     'heroicons_solid:check-badge'
                                                 "
                                                 [matTooltip]="
-                                                    'You paid this course at least once'
+                                                    'Sample paid'
                                                 "
                                             ></mat-icon>
                                         }
@@ -109,7 +110,10 @@
                                 <div class="mt-4 text-lg font-medium">
                                     {{ course.title }}
                                 </div>
-                                <div class="text-secondary mt-0.5 line-clamp-2">
+                                <div class="mt-1 text-md font-bold">
+                                    {{ course.id }}
+                                </div>
+                                <div class="text-secondary mt-2 line-clamp-2">
                                     {{ course.description }}
                                 </div>
                                 <div class="my-6 h-1 w-12 border-t-2"></div>
@@ -122,7 +126,7 @@
                                         [svgIcon]="'heroicons_solid:exclamation-circle'"
                                     ></mat-icon>
                                     <div class="ml-1.5">
-                                        Sample Priority
+                                        High Priority
                                     </div>
                                 </div>
                                 <!-- Course completion -->
@@ -145,22 +149,10 @@
                             <div class="mt-auto flex w-full flex-col">
                                 <!-- Course progress -->
                                 <div class="relative h-0.5">
-                                    <div
-                                        class="absolute inset-x-0 z-10 -mt-3 h-6"
-                                        [matTooltip]="
-                                            course.progress.currentStep /
-                                                course.totalSteps | percent
-                                        "
-                                        [matTooltipPosition]="'above'"
-                                        [matTooltipClass]="'-mb-0.5'"
-                                    ></div>
+                                   
                                     <mat-progress-bar
                                         class="h-0.5"
-                                        [value]="
-                                            (100 *
-                                                course.progress.currentStep) /
-                                            course.totalSteps
-                                        "
+                                        [value]="0"
                                     ></mat-progress-bar>
                                 </div>
 
@@ -168,7 +160,8 @@
                                 <div
                                     class="bg-gray-50 px-6 py-4 text-right dark:bg-transparent"
                                 >
-                                    <a
+                                    @if (course.category == 'paid') {
+                                        <a
                                         mat-stroked-button
                                         (click)="openRecollectDialog()"
                                     >
@@ -183,6 +176,18 @@
                                             ></mat-icon>
                                         </span>
                                     </a>
+                                    } @else {
+                                        <a
+                                        mat-stroked-button
+                                        
+                                    >
+                                        <span class="inline-flex items-center">
+                                            <!-- Collect -->
+                                            <span>Pay First</span>
+                                            
+                                        </span>
+                                    </a>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -199,12 +204,12 @@
                     <div
                         class="text-secondary mt-6 text-2xl font-semibold tracking-tight"
                     >
-                        No courses found!
+                        No Sample found!
                     </div>
                 </div>
             }
 
-            <!-- No courses -->
+            <!-- No Sample -->
         </div>
     </div>
 </div>
