@@ -103,9 +103,6 @@ export const appRoutes: Route[] = [
                     { path: 'billing', loadChildren: () => import('app/modules/admin/apps/billing/billing.routes') },
                     { path: 'laboratory', loadChildren: () => import('app/modules/admin/apps/lab-sample-centric/lab-sample-centric.routes') },
                     { path: 'consultation', loadChildren: () => import('app/modules/admin/apps/consultation/consultation.routes') },
-                    { path: 'academy', loadChildren: () => import('app/modules/admin/apps/academy/academy.routes') },
-                    { path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.routes') },
-                    { path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.routes') },
                     { path: 'file-manager', loadChildren: () => import('app/modules/admin/apps/file-manager/file-manager.routes') },
                 ]
             },
@@ -155,14 +152,6 @@ export const appRoutes: Route[] = [
                     // Other Components
                     { path: 'other-components', loadChildren: () => import('app/modules/admin/ui/other-components/other-components.routes') },
 
-                    // Cards
-                    { path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.routes') },
-
-                    // Forms
-                    { path: 'forms', loadChildren: () => import('app/modules/admin/ui/forms/forms.routes') },
-
-                    // Icons
-                    { path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.routes') },
                 ]
             },
 

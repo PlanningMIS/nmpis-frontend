@@ -24,8 +24,6 @@ import {
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EmpowerFindByKeyPipe } from '@empower/pipes/find-by-key/find-by-key.pipe';
-import { AcademyService } from 'app/modules/admin/apps/academy/academy.service';
-import { Course } from 'app/modules/admin/apps/academy/academy.types';
 import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { CollectSampleDialog } from '../dialogs/collect-sample/collect-sample.component';
 
@@ -239,7 +237,7 @@ export class RejectedSampleComponent implements OnInit, OnDestroy {
         },
     ];
 
-    filteredCourses: Course[];
+    filteredCourses: any[];
     filters: {
         categorySlug$: BehaviorSubject<string>;
         query$: BehaviorSubject<string>;
@@ -257,7 +255,6 @@ export class RejectedSampleComponent implements OnInit, OnDestroy {
         private _activatedRoute: ActivatedRoute,
         private _changeDetectorRef: ChangeDetectorRef,
         private _router: Router,
-        private _academyService: AcademyService
     ) {}
 
     // -----------------------------------------------------------------------------------------------------
