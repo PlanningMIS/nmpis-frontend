@@ -1,0 +1,940 @@
+<div class="flex min-w-0 flex-auto flex-col">
+    <!-- Header -->
+    <div
+        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-8"
+    >
+        <div class="min-w-0 flex-1">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Criteria</a>
+                </div>
+                <div class="ml-1 flex items-center whitespace-nowrap">
+                    <mat-icon
+                        class="text-secondary icon-size-5"
+                        [svgIcon]="'heroicons_mini:chevron-right'"
+                    ></mat-icon>
+                    <a class="ml-1 text-primary-500">Accessment</a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2
+                    class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
+                >
+                    Criteria Accessment
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <div class="max-w-full">
+            <!-- Horizontal stepper -->
+            <div class="mb-8 mt-16 text-3xl font-bold">Criteria Accessment</div>
+
+            <form
+                class="bg-card overflow-hidden rounded p-4 shadow"
+                [formGroup]="horizontalStepperForm"
+            >
+                <mat-horizontal-stepper [linear]="true" #horizontalStepper>
+                    <mat-step
+                        [formGroupName]="'step1'"
+                        [stepControl]="horizontalStepperForm.get('step1')"
+                        #horizontalStepperStep1
+                    >
+                        <!-- <ng-template matStepLabel>Project Information</ng-template> -->
+                        <p class="my-6 font-bold">
+                            National, Regional and International Development
+                            Goals
+                        </p>
+
+                        <!-- NAMES -->
+                        <div class="grid w-full grid-cols-2 gap-4">
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Nature of the Project/ Program</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'natureProject'"
+                                    [placeholder]="
+                                        'Nature of the Project/ Program'
+                                    "
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Prioritization and Sequencing within the
+                                    Sector</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="
+                                        'prioritizationAndSequencing'
+                                    "
+                                    [placeholder]="
+                                        'Prioritization and Sequencing within the Sector'
+                                    "
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Tanzania Development Vision (TDV 2025)
+                                </mat-label>
+                                <mat-select
+                                    [formControlName]="'tdv'"
+                                    [placeholder]="
+                                        'Tanzania Development Vision (TDV 2025)'
+                                    "
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Third Five-Year Development Plan (FYDP
+                                    III)</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'fydp'"
+                                    [placeholder]="
+                                        'Third Five-Year Development Plan (FYDP III)'
+                                    "
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Sustainable Development Goals
+                                    (SDG)</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'sdg'"
+                                    [placeholder]="
+                                        'Sustainable Development Goals (SDG)'
+                                    "
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label>Agenda 2063</mat-label>
+                                <mat-select
+                                    [formControlName]="'agenda_2063'"
+                                    [placeholder]="'Agenda 2063'"
+                                >
+                                    <mat-option value="new"
+                                        >New Project</mat-option
+                                    >
+                                    <mat-option value="existing"
+                                        >Existing Project</mat-option
+                                    >
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Grid Layout for Two Columns -->
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <!-- Left Column -->
+                            <div class="space-y-4">
+                                <h1 class="text-lg font-bold">Cash Inflows (Revenues)</h1>
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 1
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 1"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 2
+                                        </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 2"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 3
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 3"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 4
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 4"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="space-y-4">
+                                <h1 class="text-lg font-bold">Cash Outflows (Expenses)</h1>
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 1
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 1"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 2
+                                        </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 2"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 3
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 3"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 4
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 4"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                [disabled]="
+                                    horizontalStepperStep1.stepControl
+                                        .pristine ||
+                                    horizontalStepperStep1.stepControl.invalid
+                                "
+                                type="button"
+                                matStepperNext
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step
+                        [formGroupName]="'step2'"
+                        [stepControl]="horizontalStepperForm.get('step2')"
+                        #horizontalStepperStep2
+                    >
+                        <!-- <ng-template matStepLabel>Fund Information</ng-template> -->
+                        <p class="my-6 font-bold">Project Framework</p>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Project Scope</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'projectScope'"
+                                    [placeholder]="'Project Scope'"
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="grid w-full grid-cols-2 gap-4">
+                            <mat-form-field appearance="outline" class="w-full">
+                                <mat-label>Project Goal</mat-label>
+                                <textarea
+                                    matInput
+                                    formControlName="projectGoal"
+                                    rows="6"
+                                    placeholder="Write your Project Goal here..."
+                                    appCapitalizeFirstLetter
+                                ></textarea>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="w-full">
+                                <mat-label>Project Purpose</mat-label>
+                                <textarea
+                                    matInput
+                                    formControlName="projectPurpose"
+                                    rows="6"
+                                    placeholder="Write your Project Purpose here..."
+                                    appCapitalizeFirstLetter
+                                ></textarea>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label>Project Outputs</mat-label>
+                                <mat-select
+                                    [formControlName]="'ProjectOutputs'"
+                                    [placeholder]="'Project Outputs'"
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label>Project Activities</mat-label>
+                                <mat-select
+                                    [formControlName]="'ProjectActivities'"
+                                    [placeholder]="'Project Activities'"
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Project Inputs (Resources)</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'ProjectInput'"
+                                    [placeholder]="'Project Inputs (Resources)'"
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Objective Verifiable Indicators</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'objectiveVerifiable'"
+                                    [placeholder]="
+                                        'Objective Verifiable Indicators'
+                                    "
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Objective Verifiable Indicators</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'objectiveVerifiable'"
+                                    [placeholder]="
+                                        'Objective Verifiable Indicators'
+                                    "
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Implementation Plan (Action
+                                    Plan)</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'ImplementationPlan'"
+                                    [placeholder]="'Implementation Plan'"
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label>Compensation to PAP</mat-label>
+                                <mat-select
+                                    [formControlName]="'CompensationPAP'"
+                                    [placeholder]="'Compensation to PAP'"
+                                    required
+                                >
+                                    <mat-option value="Compensated"
+                                        >Compensated</mat-option
+                                    >
+                                    <mat-option value="notCompensated"
+                                        >Not Compensated</mat-option
+                                    >
+                                    <mat-option value="notApplicable"
+                                        >N/A</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Certificate of Right of Occupance
+                                    (Land)</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'CertificateRight'"
+                                    [placeholder]="
+                                        'Certificate of Right of Occupance (Land)'
+                                    "
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Management and Institution Setup</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="'ManagementInstitution'"
+                                    [placeholder]="
+                                        'Management and Institution Setup'
+                                    "
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="gt-xs:pr-3 flex-auto">
+                                <mat-label
+                                    >Identification of Project Implementation
+                                    Team</mat-label
+                                >
+                                <mat-select
+                                    [formControlName]="
+                                        'IdentificationProjectImplementationTeam'
+                                    "
+                                    [placeholder]="
+                                        'Identification of Project Implementation Team'
+                                    "
+                                    required
+                                >
+                                    <mat-option value="available"
+                                        >Available</mat-option
+                                    >
+                                    <mat-option value="notAvailable"
+                                        >Not Available</mat-option
+                                    >
+                                </mat-select>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:hashtag'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button
+                                class="mr-2 px-8"
+                                mat-flat-button
+                                [color]="'accent'"
+                                type="button"
+                                matStepperPrevious
+                            >
+                                Back
+                            </button>
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                [disabled]="
+                                    horizontalStepperStep2.stepControl
+                                        .pristine ||
+                                    horizontalStepperStep2.stepControl.invalid
+                                "
+                                type="button"
+                                matStepperNext
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step
+                        [formGroupName]="'step3'"
+                        [stepControl]="horizontalStepperForm.get('step3')"
+                        #horizontalStepperStep3
+                    >
+                        <!-- <ng-template matStepLabel>Project Information</ng-template> -->
+                        <p class="my-6 font-bold">Technical Feasibility</p>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain technology and System Integration
+                                   </mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'technology'"
+                                    [placeholder]="
+                                        'Explain technology and System Integration'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain technical Skills and
+                                    Expertise</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'Skills'"
+                                    [placeholder]="
+                                        'Explain technical Skills and Expertise'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain technical Resource Availability
+                                    (materials, tools, equipment and
+                                    technology)</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'Availability'"
+                                    [placeholder]="
+                                        'Explain technical Resource Availability (materials, tools, equipment and technology)'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain Regulatory and Standards Compliance
+                                    of the respective industry</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'Compliance'"
+                                    [placeholder]="
+                                        'Explain Regulatory and Standards Compliance of the respective industry'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain facilitation Infrastructure
+                                    Requirements</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'facilitation'"
+                                    [placeholder]="
+                                        'Explain facilitation Infrastructure Requirements'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain scalability and
+                                    flexibility*</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'scalability'"
+                                    [placeholder]="
+                                        'Explain scalability and flexibility*'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain Technical Maintenance
+                                    cycle</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'Maintenance'"
+                                    [placeholder]="
+                                        'Explain Technical Maintenance cycle'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Explain Cost Analysis of technical
+                                    components</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'CostAnalysis'"
+                                    [placeholder]="
+                                        'Explain Cost Analysis of technical components'
+                                    "
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                [disabled]="
+                                    horizontalStepperStep3.stepControl
+                                        .pristine ||
+                                    horizontalStepperStep3.stepControl.invalid
+                                "
+                                type="button"
+                                matStepperNext
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step
+                        [formGroupName]="'step4'"
+                        [stepControl]="horizontalStepperForm.get('step4')"
+                        #horizontalStepperStep4
+                    >
+                        <!-- <ng-template matStepLabel>Project Information</ng-template> -->
+                        <p class="my-6 font-bold">
+                            Financial and Economic Viability
+                        </p>
+
+                        <div class="w-full">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-lg font-bold"
+                                    >Project Duration</mat-label
+                                >
+                                <input
+                                    matInput
+                                    [formControlName]="'ProjectDuration'"
+                                    [placeholder]="'Project Duration'"
+                                    required
+                                />
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:pencil'"
+                                ></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                [disabled]="
+                                    horizontalStepperStep3.stepControl
+                                        .pristine ||
+                                    horizontalStepperStep3.stepControl.invalid
+                                "
+                                type="button"
+                                matStepperNext
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </mat-step>
+
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <p class="my-6 font-medium">
+                            Thank you for completing our form! You can reset the
+                            form if you would like to change your information.
+                        </p>
+                        <div class="mt-8 flex justify-end">
+                            <button
+                                class="mr-2 px-8"
+                                mat-flat-button
+                                [color]="'accent'"
+                                type="button"
+                                matStepperPrevious
+                            >
+                                Back
+                            </button>
+                            <button
+                                class="mr-2 px-8"
+                                mat-flat-button
+                                [color]="'warn'"
+                                type="reset"
+                                (click)="horizontalStepper.reset()"
+                            >
+                                Reset
+                            </button>
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="openConfirmationDialog()"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </form>
+        </div>
+    </div>
+</div>

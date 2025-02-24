@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -9,8 +9,36 @@ import { RouterOutlet } from '@angular/router';
     imports: [RouterOutlet],
 })
 export class AppComponent {
-    /**
-     * Constructor
+    private idleTimeout: any;
+
+    constructor(private router: Router) {}
+  
+    ngOnInit(): void {
+      this.resetIdleTimer(); // Start idle timer when app loads
+    }
+  
+    // Detect user activity (Mouse move, Click, Key press)
+    @HostListener('window:mousemove')
+    @HostListener('window:keydown')
+    @HostListener('window:click')
+    resetIdleTimer(): void {
+      clearTimeout(this.idleTimeout); // Clear previous timeout
+      this.idleTimeout = setTimeout(() => {
+        this.signOut(); // Call logout after 10 seconds of inactivity
+      }, 100000); // 10 seconds
+    }
+  
+    // Log out user and redirect to login page
+    logoutUser(): void {
+      console.log('User inactive for 10 seconds. Logging out...');
+      localStorage.clear(); // Clear stored user session (optional)
+      this.router.navigate(['/sign-in']); // Redirect to login page
+    }
+
+        /**
+     * Sign out
      */
-    constructor() {}
+        signOut(): void {
+            this.router.navigate(['/sign-out']);
+        }
 }

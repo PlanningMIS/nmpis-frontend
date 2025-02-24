@@ -423,12 +423,12 @@
                         class="w-full bg-transparent"
                         mat-table
                         matSort
-                        [dataSource]="recentTransactionsDataSource"
+                        [dataSource]="recentProjectDataSource"
                         [trackBy]="trackByFn"
-                        #recentTransactionsTable
+                        #recentprojectsTable
                     >
                         <!-- Transaction ID -->
-                        <ng-container matColumnDef="transactionId">
+                        <ng-container matColumnDef="projectId">
                             <th
                                 mat-header-cell
                                 mat-sort-header
@@ -436,11 +436,11 @@
                             >
                                 Transaction ID
                             </th>
-                            <td mat-cell *matCellDef="let transaction">
+                            <td mat-cell *matCellDef="let project">
                                 <span
                                     class="text-secondary whitespace-nowrap pr-6 text-sm font-medium"
                                 >
-                                    {{ transaction.transactionId }}
+                                    {{ project.projectId }}
                                 </span>
                             </td>
                         </ng-container>
@@ -454,9 +454,9 @@
                             >
                                 Date
                             </th>
-                            <td mat-cell *matCellDef="let transaction">
+                            <td mat-cell *matCellDef="let project">
                                 <span class="whitespace-nowrap pr-6">
-                                    {{ transaction.date | date: 'MMM dd, y' }}
+                                    {{ project.date | date: 'MMM dd, y' }}
                                 </span>
                             </td>
                         </ng-container>
@@ -470,9 +470,9 @@
                             >
                                 Name
                             </th>
-                            <td mat-cell *matCellDef="let transaction">
+                            <td mat-cell *matCellDef="let project">
                                 <span class="whitespace-nowrap pr-6">
-                                    {{ transaction.name }}
+                                    {{ project.name }}
                                 </span>
                             </td>
                         </ng-container>
@@ -486,11 +486,11 @@
                             >
                                 Amount
                             </th>
-                            <td mat-cell *matCellDef="let transaction">
+                            <td mat-cell *matCellDef="let project">
                                 <span
                                     class="whitespace-nowrap pr-6 font-medium"
                                 >
-                                    {{ transaction.amount | currency: 'TZS' }}
+                                    {{ project.amount | currency: 'TZS' }}
                                 </span>
                             </td>
                         </ng-container>
@@ -504,19 +504,19 @@
                             >
                                 Status
                             </th>
-                            <td mat-cell *matCellDef="let transaction">
+                            <td mat-cell *matCellDef="let project">
                                 <span
                                     class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide"
                                     [ngClass]="{
                                         'bg-red-200 text-red-800 dark:bg-red-600 dark:text-red-50':
-                                            transaction.status === 'pending',
+                                            project.status === 'pending',
                                         'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-50':
-                                            transaction.status === 'completed',
+                                            project.status === 'completed',
                                     }"
                                 >
                                     <span
                                         class="whitespace-nowrap leading-relaxed"
-                                        >{{ transaction.status }}</span
+                                        >{{ project.status }}</span
                                     >
                                 </span>
                             </td>
@@ -538,14 +538,14 @@
 
                         <tr
                             mat-header-row
-                            *matHeaderRowDef="recentTransactionsTableColumns"
+                            *matHeaderRowDef="recentprojectsTableColumns"
                         ></tr>
                         <tr
                             class="order-row h-16"
                             mat-row
                             *matRowDef="
                                 let row;
-                                columns: recentTransactionsTableColumns
+                                columns: recentprojectsTableColumns
                             "
                         ></tr>
                         <tr

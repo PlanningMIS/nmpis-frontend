@@ -1568,7 +1568,7 @@ export const finance = {
     recentTransactions: [
         {
             id: '1b6fd296-bc6a-4d45-bf4f-e45519a58cf5',
-            transactionId: '528651571NT',
+            projectId: '528651571NT',
             name: 'Morgan Page',
             amount: +1358.75,
             status: 'completed',
@@ -1576,7 +1576,7 @@ export const finance = {
         },
         {
             id: '2dec6074-98bd-4623-9526-6480e4776569',
-            transactionId: '421436904YT',
+            projectId: '421436904YT',
             name: 'Nita Hebert',
             amount: -1042.82,
             status: 'completed',
@@ -1584,7 +1584,7 @@ export const finance = {
         },
         {
             id: 'ae7c065f-4197-4021-a799-7a221822ad1d',
-            transactionId: '685377421YT',
+            projectId: '685377421YT',
             name: 'Marsha Chambers',
             amount: +1828.16,
             status: 'pending',
@@ -1592,7 +1592,7 @@ export const finance = {
         },
         {
             id: '0c43dd40-74f6-49d5-848a-57a4a45772ab',
-            transactionId: '884960091RT',
+            projectId: '884960091RT',
             name: 'Charmaine Jackson',
             amount: +1647.55,
             status: 'completed',
@@ -1600,7 +1600,7 @@ export const finance = {
         },
         {
             id: 'e5c9f0ed-a64c-4bfe-a113-29f80b4e162c',
-            transactionId: '361402213NT',
+            projectId: '361402213NT',
             name: 'Maura Carey',
             amount: -927.43,
             status: 'completed',

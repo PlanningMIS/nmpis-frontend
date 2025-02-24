@@ -40,15 +40,15 @@ import { Subject, takeUntil } from 'rxjs';
     ],
 })
 export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy {
-    @ViewChild('recentTransactionsTable', { read: MatSort })
-    recentTransactionsTableMatSort: MatSort;
+    @ViewChild('recentprojectsTable', { read: MatSort })
+    recentprojectsTableMatSort: MatSort;
 
     data: any;
     accountBalanceOptions: ApexOptions;
-    recentTransactionsDataSource: MatTableDataSource<any> =
+    recentProjectDataSource: MatTableDataSource<any> =
         new MatTableDataSource();
-    recentTransactionsTableColumns: string[] = [
-        'transactionId',
+    recentprojectsTableColumns: string[] = [
+        'projectId',
         'date',
         'name',
         'amount',
@@ -77,7 +77,7 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.data = data;
 
                 // Store the table data
-                this.recentTransactionsDataSource.data =
+                this.recentProjectDataSource.data =
                     data.recentTransactions;
 
                 // Prepare the chart data
@@ -90,8 +90,8 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy {
      */
     ngAfterViewInit(): void {
         // Make the data source sortable
-        this.recentTransactionsDataSource.sort =
-            this.recentTransactionsTableMatSort;
+        this.recentProjectDataSource.sort =
+            this.recentprojectsTableMatSort;
     }
 
     /**

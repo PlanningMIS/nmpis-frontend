@@ -87,22 +87,10 @@ export const appRoutes: Route[] = [
                 ]
             },
 
-            // ADMIN
-            {
-                path: 'admin', children: [
-                    // Billing
-                    { path: 'billing', loadChildren: () => import('app/modules/admin/system-admin/billing/billing.routes') },
-                ]
-            },
-
-
             // Apps
             {
                 path: 'apps', children: [
-                    { path: 'clients', loadChildren: () => import('app/modules/admin/apps/clients/clients.routes') },
-                    { path: 'billing', loadChildren: () => import('app/modules/admin/apps/billing/billing.routes') },
-                    { path: 'laboratory', loadChildren: () => import('app/modules/admin/apps/lab-sample-centric/lab-sample-centric.routes') },
-                    { path: 'consultation', loadChildren: () => import('app/modules/admin/apps/consultation/consultation.routes') },
+                    { path: 'projects', loadChildren: () => import('app/modules/users/project/project.routes') },
                     { path: 'file-manager', loadChildren: () => import('app/modules/admin/apps/file-manager/file-manager.routes') },
                 ]
             },
@@ -114,44 +102,16 @@ export const appRoutes: Route[] = [
                     // Error
                     {
                         path: 'error', children: [
-                            { path: '404', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes') },
-                            { path: '500', loadChildren: () => import('app/modules/admin/pages/error/error-500/error-500.routes') }
-                        ]
-                    },
-
-                    // Invoice
-                    {
-                        path: 'invoice', children: [
-                            {
-                                path: 'printable', children: [
-                                    { path: 'compact', loadChildren: () => import('app/modules/admin/pages/invoice/printable/compact/compact.routes') },
-                                    { path: 'modern', loadChildren: () => import('app/modules/admin/pages/invoice/printable/modern/modern.routes') }
-                                ]
-                            }
+                            { path: '404', loadChildren: () => import('app/modules/shared/pages/error/error-404/error-404.routes') },
+                            { path: '500', loadChildren: () => import('app/modules/shared/pages/error/error-500/error-500.routes') }
                         ]
                     },
 
                     // Maintenance
-                    { path: 'maintenance', loadChildren: () => import('app/modules/admin/pages/maintenance/maintenance.routes') },
-
-                    // Profile
-                    { path: 'profile', loadChildren: () => import('app/modules/admin/pages/profile/profile.routes') },
+                    { path: 'maintenance', loadChildren: () => import('app/modules/shared/pages/maintenance/maintenance.routes') },
 
                     // Settings
-                    { path: 'settings', loadChildren: () => import('app/modules/admin/pages/settings/settings.routes') },
-                ]
-            },
-
-            // User Interface
-            {
-                path: 'ui', children: [
-
-                    // Empower Components
-                    { path: 'empower-components', loadChildren: () => import('app/modules/admin/ui/empower-components/empower-components.routes') },
-
-                    // Other Components
-                    { path: 'other-components', loadChildren: () => import('app/modules/admin/ui/other-components/other-components.routes') },
-
+                    { path: 'settings', loadChildren: () => import('app/modules/shared/pages/settings/settings.routes') },
                 ]
             },
 
@@ -168,7 +128,7 @@ export const appRoutes: Route[] = [
             },
 
             // 404 & Catch all
-            { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/error/error-404/error-404.routes') },
+            { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/shared/pages/error/error-404/error-404.routes') },
             { path: '**', redirectTo: '404-not-found' }
         ]
     }

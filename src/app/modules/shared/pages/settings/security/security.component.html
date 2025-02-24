@@ -1,0 +1,63 @@
+<div class="w-full max-w-5xl">
+    <div class="border rounded-lg overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+              >
+                File
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+              >
+                Type
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+              >
+                Uploaded
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+              >
+                Size
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-right text-sm font-medium text-gray-600 uppercase tracking-wider"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 bg-white">
+            <tr *ngFor="let file of files" class="hover:bg-gray-50">
+              <td class="px-6 py-4 flex items-center">
+                <span
+                  class="flex items-center justify-center w-10 h-10 bg-blue-100 text-blue-600 rounded-lg"
+                >
+                  <i class="fas fa-file-alt"></i>
+                </span>
+                <span class="ml-3 text-gray-700 font-medium">{{ file.name }}</span>
+              </td>
+              <td class="px-6 py-4 text-gray-600">{{ file.type }}</td>
+              <td class="px-6 py-4 text-gray-600">{{ file.uploaded }}</td>
+              <td class="px-6 py-4 text-gray-600">{{ file.size }}</td>
+              <td class="px-6 py-4 text-right">
+                <button
+                  class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow"
+                  (click)="onDownload(file)"
+                >
+                  Download
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>

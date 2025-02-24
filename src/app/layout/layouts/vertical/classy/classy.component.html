@@ -4,51 +4,28 @@
 <!-- Navigation -->
 <empower-vertical-navigation
     class="dark bg-gray-900 print:hidden"
+    [appearance]="'compact'"
     [mode]="isScreenSmall ? 'over' : 'side'"
     [name]="'mainNavigation'"
-    [navigation]="navigation.default"
+    [navigation]="navigation.compact"
     [opened]="!isScreenSmall"
 >
     <!-- Navigation header hook -->
     <ng-container empowerVerticalNavigationContentHeader>
-        <div class="flex w-full items-center p-4 pl-6">
-            <!-- Logo -->
-            <div class="flex items-center justify-center">
-                <img class="w-14" src="images/logo/logo.svg"  />
-            </div>
-            <!-- Components -->
-            <div class="ml-auto flex items-center">
-                <!-- <notifications></notifications> -->
-                <user [showAvatar]="false"></user>
-            </div>
-        </div>
-        <!-- User -->
-        <div class="flex w-full flex-col items-center p-4">
+        <!-- LOGO -->
+        <div class="flex w-full flex-col items-center p-8">
             <div class="relative h-24 w-24">
-                @if (user.avatar) {
-                    <img
-                        class="h-full w-full rounded-full"
-                        [src]="user.avatar"
+                <img
+                        class="h-full w-full"
+                        src="images/logo/Coat_of_arms_of_Tanzania.svg.png"
                         alt="User avatar"
                     />
-                }
-                @if (!user.avatar) {
-                    <mat-icon
-                        class="icon-size-24"
-                        [svgIcon]="'heroicons_solid:user-circle'"
-                    ></mat-icon>
-                }
             </div>
             <div class="mt-6 flex w-full flex-col items-center justify-center">
                 <div
-                    class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center font-medium leading-normal"
+                    class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center font-semibold leading-normal"
                 >
-                    {{ user.name }}
-                </div>
-                <div
-                    class="text-secondary mt-0.5 w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-md font-medium leading-normal"
-                >
-                    {{ user.email }}
+                    NPMIS
                 </div>
             </div>
         </div>
@@ -56,7 +33,7 @@
     <!-- Navigation footer hook -->
     <ng-container empowerVerticalNavigationContentFooter>
         <div
-            class="mb-4 mt-2 flex h-16 flex-0 items-center justify-center pl-2 pr-6 opacity-12"
+            class="mb-4 mt-8 flex h-16 flex-0 items-center justify-center pl-2 pr-6 opacity-12"
         >
             <img class="max-w-48" src="images/logo/logo-text-on-dark.svg" />
         </div>
@@ -75,11 +52,13 @@
         </button>
         <!-- Components -->
         <div class="ml-auto flex items-center space-x-0.5 pl-2 sm:space-x-2">
-            <languages></languages>
+            <!-- <languages></languages> -->
             <empower-fullscreen class="hidden md:block"></empower-fullscreen>
             <!-- <search [appearance]="'bar'"></search> -->
-            <shortcuts></shortcuts>
+            <!-- <shortcuts></shortcuts> -->
             <!-- <messages></messages> -->
+            <notifications></notifications>
+            <user></user>
         </div>
     </div>
 

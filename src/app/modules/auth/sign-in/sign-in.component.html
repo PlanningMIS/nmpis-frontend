@@ -5,21 +5,21 @@
         class="flex overflow-hidden sm:bg-card sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl"
     >
         <div
-            class="relative hidden h-full flex-auto items-center justify-center overflow-hidden bg-gray-800 p-16 dark:border-r md:flex lg:px-28"
+            class="relative hidden h-full flex-auto items-center justify-center overflow-hidden bg-primary p-16 dark:border-r md:flex lg:px-28"
         >
             <!-- Background -->
             <!-- Rings -->
             <!-- prettier-ignore -->
             <svg class="absolute inset-0 pointer-events-none"
                  viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-                <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+                <g class="text-white opacity-25" fill="none" stroke="currentColor" stroke-width="100">
                     <circle r="234" cx="196" cy="23"></circle>
                     <circle r="234" cx="790" cy="491"></circle>
                 </g>
             </svg>
             <!-- Dots -->
             <!-- prettier-ignore -->
-            <svg class="absolute -top-16 -right-16 text-gray-700"
+            <svg class="absolute -top-16 -right-16 text-white"
                  viewBox="0 0 220 192" width="220" height="192" fill="none">
                 <defs>
                     <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -29,19 +29,24 @@
                 <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
             </svg>
             <!-- Content -->
-            <div class="relative z-10 w-full max-w-2xl">
-                <div class="text-7xl font-bold leading-none text-gray-100">
-                    <div>Welcome to</div>
-                    <div>our Empower HIS</div>
-                </div>
-                <div
-                    class="mt-6 text-lg leading-6 tracking-tight text-gray-400"
-                >
-                A digital version of a patient's paper-based medical charts. 
-                EMRs are used by clinicians in hospitals, clinics, and private practices 
-                for diagnosis and treatment
+            <div class="flex items-center justify-center">
+                <div class="relative z-10 w-full max-w-2xl text-center">
+                    <div class="text-7xl font-bold leading-snug text-black">
+                        <div>The United Republic of Tanzania</div>
+                    </div>
+                    <div class="relative h-80 w-72 mx-auto mt-4">
+                        <img
+                            class="h-full w-full"
+                            src="images/logo/Coat_of_arms_of_Tanzania.svg.png"
+                            alt="User avatar"
+                        />
+                    </div>
+                    <div class="mt-6 text-2xl leading-6 tracking-tight text-gray-100">
+                        National Projects Management Information System (NPMIS)
+                    </div>
                 </div>
             </div>
+            
         </div>
         <div class="w-full px-4 py-8 sm:w-auto sm:p-12 md:p-16">
             <div class="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
@@ -54,7 +59,7 @@
                 <div
                     class="mt-8 text-4xl font-extrabold leading-tight tracking-tight"
                 >
-                    Sign in
+                    LOGIN
                 </div>
 
                 <!-- Alert -->
@@ -139,7 +144,7 @@
                         (click)="signIn()"
                     >
                         @if (!signInForm.disabled) {
-                            <span> Sign in </span>
+                            <span class="text-white font-extrabold"> LOGIN </span>
                         }
                         @if (signInForm.disabled) {
                             <mat-progress-spinner

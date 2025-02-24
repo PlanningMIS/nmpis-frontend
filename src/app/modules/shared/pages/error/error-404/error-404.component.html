@@ -1,0 +1,34 @@
+<div class="absolute inset-0">
+    <!-- Main -->
+    <div class="flex h-full flex-auto flex-col items-center justify-center p-6 sm:p-10">
+        <!-- prettier-ignore -->
+        <div class="w-full max-w-3xl">
+            <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Rounded "404" Text with Stroke -->
+                <text x="50%" y="50%" fill="rgb(99, 102, 241)" stroke="rgb(99, 102, 241)" stroke-width="10"
+                    font-size="180" font-weight="bold" text-anchor="middle"
+                    dominant-baseline="middle" font-family="Arial, sans-serif"
+                    stroke-linejoin="round">
+                    404
+                </text>
+            
+                <!-- Sad Face inside Zero -->
+                <circle cx="200" cy="100" r="30" fill="transparent" stroke="rgb(99, 102, 241)" stroke-width="6" />
+                <circle cx="190" cy="90" r="6" fill="rgb(99, 102, 241)" />
+                <circle cx="210" cy="90" r="6" fill="rgb(99, 102, 241)" />
+                <path d="M190 120 Q200 130, 210 120" stroke="rgb(99, 102, 241)" stroke-width="5" fill="none" />
+            </svg>            
+
+        </div>
+        <div
+            class="text-center text-4xl font-extrabold leading-tight tracking-tight md:text-7xl md:leading-none">
+            Ooops... 404!
+        </div>
+        <div class="text-secondary mt-2 text-center text-lg font-medium tracking-tight md:text-xl">
+            The page you requested could not be found.
+        </div>
+        <a class="mt-12 font-medium text-primary-500 underline" [routerLink]="['/']">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
