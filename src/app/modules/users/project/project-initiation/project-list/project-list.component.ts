@@ -8,7 +8,7 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -38,7 +38,8 @@ import { EmpowerConfirmationService } from '@empower/services/confirmation';
         MatSortModule,
         NgClass,
         MatProgressBarModule,
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
     templateUrl: './project-list.component.html',
     styleUrl: './project-list.component.scss',
@@ -54,6 +55,10 @@ export class ProjectListComponent implements OnInit, AfterViewInit, OnDestroy {
     configForm: UntypedFormGroup;
 
     data: any;
+    sectors: any;
+    selectedStatus: string | null = null; // Default value
+    selectedSector: string | null = null; // Default value
+    searchProjectName: string = ''; // Stores the input value
     filteredData: any[] = [];
     isLoading: boolean = false;
     recentprojectsTableColumns: string[] = [
@@ -82,6 +87,8 @@ export class ProjectListComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit(): void {
 
         this.getConceptNotes();
+
+        this.getSectors();
 
         this.configForm = this._formBuilder.group({
             title: 'Remove Project',
@@ -131,6 +138,65 @@ export class ProjectListComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log('Err', error);
         });
     }
+  
+    onStatusChange(event: any) {
+        console.log('Selected status:', event.value);
+        this.apisService.get_private(`projects/conceptnote/?status=${event.value}`).then((response: any) => {
+            console.log(">>>>>", response);
+          this.data = response.data;
+          this.recentProjectDataSource.data = this.data;
+          }, error => {
+            console.log('Error', error);
+          }).catch(error => {
+            console.log('Err', error);
+          });
+    }  
+
+    getSectors() {
+        this.apisService.get_private('settings/sector').then((response: any) => {
+          console.log(">>>>>", response);
+        this.sectors = response.data;
+        }, error => {
+          console.log('Error', error);
+        }).catch(error => {
+          console.log('Err', error);
+        });
+      }
+
+      onSectorSelected(event: any) {
+        const selectedSectorId = event.value;
+        // Your logic here to handle the selected sector
+        console.log('Selected Sector ID:', selectedSectorId);
+        this.apisService.get_private(`projects/conceptnote/?sector=${selectedSectorId}`).then((response: any) => {
+            console.log(">>>>>", response);
+          this.data = response.data;
+          this.recentProjectDataSource.data = this.data;
+          }, error => {
+            console.log('Error', error);
+          }).catch(error => {
+            console.log('Err', error);
+          });
+    }
+
+    resetFilter() {
+        this.selectedStatus = null; // Resets the selection
+        this.selectedSector = null; // Resets the selection
+        this.searchProjectName = "";
+        this.getConceptNotes();
+     }
+
+     onKeyPress() {
+        console.log('Current Input:', this.searchProjectName);
+        this.apisService.get_private(`projects/conceptnote/?project_name=${this.searchProjectName}`).then((response: any) => {
+            console.log(">>>>>", response);
+          this.data = response.data;
+          this.recentProjectDataSource.data = this.data;
+          }, error => {
+            console.log('Error', error);
+          }).catch(error => {
+            console.log('Err', error);
+          });
+      }
 
     openConfirmationDialog(): void {
         const dialogRef = this._empowerConfirmationService.open(

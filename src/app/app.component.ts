@@ -41,4 +41,10 @@ export class AppComponent {
         signOut(): void {
             this.router.navigate(['/sign-out']);
         }
+
+// Inside a component
+// hasPermission(permission: string): boolean {
+//   return this.authService.getPermissions().includes(permission);
+// }
+     
 }

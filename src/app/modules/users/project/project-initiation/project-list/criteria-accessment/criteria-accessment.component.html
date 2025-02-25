@@ -1,7 +1,7 @@
 <div class="flex min-w-0 flex-auto flex-col">
     <!-- Header -->
     <div
-        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-8"
+        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-6"
     >
         <div class="min-w-0 flex-1">
             <!-- Breadcrumbs -->
@@ -32,7 +32,7 @@
     <div class="flex-auto p-6 sm:p-10">
         <div class="max-w-full">
             <!-- Horizontal stepper -->
-            <div class="mb-8 mt-16 text-3xl font-bold">Criteria Accessment</div>
+            <div class="mb-8 mt-3 text-3xl font-bold">Criteria Accessment</div>
 
             <form
                 class="bg-card overflow-hidden rounded p-4 shadow"
@@ -102,12 +102,15 @@
                                     [placeholder]="
                                         'Tanzania Development Vision (TDV 2025)'
                                     "
-                                >
-                                    <mat-option value="new"
-                                        >New Project</mat-option
+                                   multiple >
+                                    <mat-option value="High Quality Livelihood"
+                                        >High Quality Livelihood</mat-option
                                     >
-                                    <mat-option value="existing"
-                                        >Existing Project</mat-option
+                                    <mat-option value="Good Governance and the Rule of Law"
+                                        >Good Governance and the Rule of Law</mat-option
+                                    >
+                                    <mat-option value="A Strong and Competitive Economy"
+                                        >A Strong and Competitive Economy</mat-option
                                     >
                                 </mat-select>
                             </mat-form-field>
@@ -122,12 +125,24 @@
                                     [placeholder]="
                                         'Third Five-Year Development Plan (FYDP III)'
                                     "
-                                >
-                                    <mat-option value="new"
-                                        >New Project</mat-option
+                                    multiple>
+                                    <mat-option value="Enhancing Production and Productivity"
+                                        >Enhancing Production and Productivity</mat-option
                                     >
-                                    <mat-option value="existing"
-                                        >Existing Project</mat-option
+                                    <mat-option value="Strengthening Industrialization"
+                                        >Strengthening Industrialization</mat-option
+                                    >
+                                    <mat-option value="Fostering a Competitive Economy"
+                                        >Fostering a Competitive Economy</mat-option
+                                    >
+                                    <mat-option value="Promoting Human Development"
+                                        >Promoting Human Development</mat-option
+                                    >
+                                    <mat-option value="Ensuring Environmental Sustainability"
+                                        >Ensuring Environmental Sustainability</mat-option
+                                    >
+                                    <mat-option value="Strengthening Good Governance and Accountability"
+                                        >EStrengthening Good Governance and Accountability</mat-option
                                     >
                                 </mat-select>
                             </mat-form-field>
@@ -142,12 +157,33 @@
                                     [placeholder]="
                                         'Sustainable Development Goals (SDG)'
                                     "
-                                >
-                                    <mat-option value="new"
-                                        >New Project</mat-option
+                                 multiple >
+                                    <mat-option value="End poverty in all its forms everywhere"
+                                        >End poverty in all its forms everywhere</mat-option
                                     >
-                                    <mat-option value="existing"
-                                        >Existing Project</mat-option
+                                    <mat-option value="End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
+                                        >End hunger, achieve food security and improved nutrition and promote sustainable agriculture</mat-option
+                                    >
+                                    <mat-option value="Ensure healthy lives and promote well-being for all at all ages"
+                                        >Ensure healthy lives and promote well-being for all at all ages</mat-option
+                                    >
+                                    <mat-option value="Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all"
+                                        >Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all</mat-option
+                                    >
+                                    <mat-option value="Achieve gender equality and empower all women and girls"
+                                        >Achieve gender equality and empower all women and girls</mat-option
+                                    >
+                                    <mat-option value="Ensure availability and sustainable management of water and sanitation for all"
+                                        >Ensure availability and sustainable management of water and sanitation for all</mat-option
+                                    >
+                                    <mat-option value="Ensure access to affordable, reliable, sustainable and modern energy for all"
+                                        >Ensure access to affordable, reliable, sustainable and modern energy for all</mat-option
+                                    >
+                                    <mat-option value="Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all"
+                                        >Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all</mat-option
+                                    >
+                                    <mat-option value="Reduce inequality within and among countries"
+                                        >Reduce inequality within and among countries</mat-option
                                     >
                                 </mat-select>
                             </mat-form-field>
@@ -157,163 +193,30 @@
                                 <mat-select
                                     [formControlName]="'agenda_2063'"
                                     [placeholder]="'Agenda 2063'"
-                                >
-                                    <mat-option value="new"
-                                        >New Project</mat-option
+                                    multiple>
+                                    <mat-option value="A Prosperous Africa Based on Inclusive Growth and Sustainable Development"
+                                        >A Prosperous Africa Based on Inclusive Growth and Sustainable Development</mat-option
                                     >
-                                    <mat-option value="existing"
-                                        >Existing Project</mat-option
+                                    <mat-option value="An Integrated Continent, Politically United, Based on the Ideals of Pan-Africanism"
+                                        >An Integrated Continent, Politically United, Based on the Ideals of Pan-Africanism</mat-option
+                                    >
+                                    <mat-option value="An Africa of Good Governance, Democracy, Respect for Human Rights, Justice, and the Rule of Law"
+                                        >An Africa of Good Governance, Democracy, Respect for Human Rights, Justice, and the Rule of Law</mat-option
+                                    >
+                                    <mat-option value="A Peaceful and Secure Africa"
+                                        >A Peaceful and Secure Africa</mat-option
+                                    >
+                                    <mat-option value="An Africa with a Strong Cultural Identity, Common Heritage, Values, and Ethics"
+                                        >An Africa with a Strong Cultural Identity, Common Heritage, Values, and Ethics</mat-option
+                                    >
+                                    <mat-option value="An Africa Where Development is People-Driven, Relying on the Potential of Women and Youth"
+                                        >An Africa Where Development is People-Driven, Relying on the Potential of Women and Youth</mat-option
+                                    >
+                                    <mat-option value="Africa as a Strong, United, Resilient, and Influential Global Player and Partner"
+                                        >Africa as a Strong, United, Resilient, and Influential Global Player and Partner</mat-option
                                     >
                                 </mat-select>
                             </mat-form-field>
-                        </div>
-
-                        <!-- Grid Layout for Two Columns -->
-                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <!-- Left Column -->
-                            <div class="space-y-4">
-                                <h1 class="text-lg font-bold">Cash Inflows (Revenues)</h1>
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 1
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 1"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 2
-                                        </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 2"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 3
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 3"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 4
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 4"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                            </div>
-
-                            <!-- Right Column -->
-                            <div class="space-y-4">
-                                <h1 class="text-lg font-bold">Cash Outflows (Expenses)</h1>
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 1
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 1"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 2
-                                        </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 2"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 3
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 3"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-
-                                <mat-form-field class="w-full">
-                                    <mat-label
-                                        >Year 4
-                                       </mat-label
-                                    >
-                                    <input
-                                        matInput
-                                        placeholder="Year 4"
-                                        required
-                                    />
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
-                                </mat-form-field>
-                            </div>
                         </div>
 
                         <div class="flex justify-end">
@@ -835,6 +738,15 @@
 
                         <div class="flex justify-end">
                             <button
+                                class="mr-2 px-8"
+                                mat-flat-button
+                                [color]="'accent'"
+                                type="button"
+                                matStepperPrevious
+                            >
+                                Back
+                            </button>
+                            <button
                                 class="px-8"
                                 mat-flat-button
                                 [color]="'primary'"
@@ -880,15 +792,174 @@
                             </mat-form-field>
                         </div>
 
+
+                        <!-- Grid Layout for Two Columns -->
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <!-- Left Column -->
+                            <div class="space-y-4">
+                                <h1 class="text-lg font-bold">Cash Inflows (Revenues)</h1>
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 1
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 1"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 2
+                                        </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 2"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 3
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 3"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 4
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 4"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="space-y-4">
+                                <h1 class="text-lg font-bold">Cash Outflows (Expenses)</h1>
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 1
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 1"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 2
+                                        </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 2"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 3
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 3"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field class="w-full">
+                                    <mat-label
+                                        >Year 4
+                                       </mat-label
+                                    >
+                                    <input
+                                        matInput
+                                        placeholder="Year 4"
+                                        required
+                                    />
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        matPrefix
+                                        [svgIcon]="'heroicons_solid:pencil'"
+                                    ></mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
                         <div class="flex justify-end">
+                            <button
+                                class="mr-2 px-8"
+                                mat-flat-button
+                                [color]="'accent'"
+                                type="button"
+                                matStepperPrevious
+                            >
+                                Back
+                            </button>
                             <button
                                 class="px-8"
                                 mat-flat-button
                                 [color]="'primary'"
                                 [disabled]="
-                                    horizontalStepperStep3.stepControl
+                                    horizontalStepperStep4.stepControl
                                         .pristine ||
-                                    horizontalStepperStep3.stepControl.invalid
+                                    horizontalStepperStep4.stepControl.invalid
                                 "
                                 type="button"
                                 matStepperNext

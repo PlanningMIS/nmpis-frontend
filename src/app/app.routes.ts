@@ -23,6 +23,9 @@ export const appRoutes: Route[] = [
         redirectTo: 'dashboards/project'
     },
 
+    // { path: 'user', component: UserComponent, canActivate: [RoleGuard], data: { role: 'user' } },
+
+
     // Auth routes for guests
     {
         path: '',

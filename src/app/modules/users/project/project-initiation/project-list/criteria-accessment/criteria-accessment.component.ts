@@ -66,7 +66,6 @@ export class CriteriaAccessmentComponent implements OnInit {
             step1: this._formBuilder.group({
                 natureProject: ['', Validators.required],
                 prioritizationAndSequencing: ['', Validators.required],
-                Sector: ['', Validators.required],
                 tdv: ['', Validators.required], // Added control for Tanzania Development Vision (TDV 2025)
                 fydp: ['', Validators.required], // Added control for FYDP III
                 sdg: ['', Validators.required],  // Added control for SDGs

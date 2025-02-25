@@ -162,6 +162,12 @@ export class AuthService {
      * Check the authentication status
      */
     check(): Observable<boolean> {
+
+        if(localStorage.getItem('accessToken')){
+            this._authenticated = true
+            return of(true);
+        }
+
         // Check if the user is logged in
         if (this._authenticated) {
             return of(true);

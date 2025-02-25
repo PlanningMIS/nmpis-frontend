@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { CapitalizeFirstLetterDirective } from '@empower/directives/capitalize-first-letter.directive';
 import { OnlyNumbersDirective } from '@empower/directives/only-numbers.directive';
 import { UppercaseDirective } from '@empower/directives/uppercase.directive';
@@ -67,6 +68,7 @@ export class ConceptNoteComponent implements OnInit {
         private location: Location,
         private empowerUtilsService: EmpowerUtilsService,
         private apisService: ApisService,
+        private router: Router
     ) {}
 
     // -----------------------------------------------------------------------------------------------------
@@ -231,6 +233,7 @@ export class ConceptNoteComponent implements OnInit {
         //     console.log(data);
         //   }
         console.log(data);
+        this.router.navigateByUrl('/apps/projects/list');
 
         }).catch((error) => {
           console.log(error);

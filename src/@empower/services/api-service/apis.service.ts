@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,14 @@ export class ApisService {
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
       };
+      
+      // if (!navigator.onLine) {
+      //   return of({ message: 'You are offline, showing cached data' });
+      // }
+      // return this.http.get<any>(this.apiUrl).pipe(
+      //   catchError(() => of({ message: 'Error fetching data, using cache' }))
+      // );
+
       this.http.get(this.baseUrl + url, header).subscribe((data) => {
         resolve(data);
       }, error => {
