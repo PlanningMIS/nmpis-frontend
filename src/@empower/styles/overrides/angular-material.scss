@@ -995,6 +995,11 @@
     }
 }
 
+.mat-mdc-form-field-required-marker {
+    color: red !important; /* Change this to any color you want */
+  }
+  
+
 /* -------------------------------------------------------------------------- */
 /*  @ Menu
 /* -------------------------------------------------------------------------- */
@@ -1151,6 +1156,12 @@
     .mdc-data-table__row:not(.mdc-data-table__row--selected):hover {
         background: none !important;
     }
+
+    th {
+        background-color: #16a34a !important;
+        color: white !important;
+        font-weight: 600 !important;
+      }
 }
 
 /* -------------------------------------------------------------------------- */

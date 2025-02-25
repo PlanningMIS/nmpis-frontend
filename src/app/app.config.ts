@@ -17,6 +17,11 @@ import { provideIcons } from 'app/core/icons/icons.provider';
 import { mockApiServices } from 'app/mock-api';
 import { firstValueFrom } from 'rxjs';
 import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
+import { provideState, provideStore } from '@ngrx/store';
+import { counterReducer } from './states/counter/counter.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { ProductReducer } from './states/product/product.reducer';
+import { ProductEffect } from './states/product/product.effect';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -27,7 +32,12 @@ export const appConfig: ApplicationConfig = {
             withPreloading(PreloadAllModules),
             withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
         ),
+        provideStore(),
+        provideState({name:'counter', reducer: counterReducer}),
+        provideState({ name: 'product', reducer: ProductReducer }),
+        provideEffects(ProductEffect),
 
+        
         // Material Date Adapter
         {
             provide: DateAdapter,

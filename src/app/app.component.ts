@@ -25,7 +25,7 @@ export class AppComponent {
       clearTimeout(this.idleTimeout); // Clear previous timeout
       this.idleTimeout = setTimeout(() => {
         this.signOut(); // Call logout after 10 seconds of inactivity
-      }, 100000); // 10 seconds
+      }, 300000); // 300 seconds
     }
   
     // Log out user and redirect to login page

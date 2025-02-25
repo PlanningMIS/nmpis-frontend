@@ -25,6 +25,9 @@ const themes = {
             ...colors.green,
             DEFAULT: colors.green[600],
         },
+        'on-primary': {
+            DEFAULT: colors.white, // Ensuring white text on primary
+        },
         accent: {
             ...colors.slate,
             DEFAULT: colors.slate[800],
