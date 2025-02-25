@@ -22,6 +22,9 @@ import { counterReducer } from './states/counter/counter.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { ProductReducer } from './states/product/product.reducer';
 import { ProductEffect } from './states/product/product.effect';
+import { isDevMode } from '@angular/core';
+import { provideServiceWorker } from '@angular/service-worker';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -30,13 +33,18 @@ export const appConfig: ApplicationConfig = {
         provideRouter(
             appRoutes,
             withPreloading(PreloadAllModules),
-            withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
+            withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
         ),
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
         provideStore(),
         provideState({name:'counter', reducer: counterReducer}),
         provideState({ name: 'product', reducer: ProductReducer }),
         provideEffects(ProductEffect),
 
+        provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
         
         // Material Date Adapter
         {
