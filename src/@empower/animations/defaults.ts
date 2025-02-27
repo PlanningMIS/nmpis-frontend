@@ -7,6 +7,6 @@ export class EmpowerAnimationCurves {
 
 export class EmpowerAnimationDurations {
     static complex = '375ms';
-    static entering = '225ms';
+    static entering = '625ms';
     static exiting = '195ms';
 }

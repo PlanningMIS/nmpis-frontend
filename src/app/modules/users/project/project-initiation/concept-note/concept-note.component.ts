@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatOptionModule} from '@angular/material/core';
+import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { CapitalizeFirstLetterDirective } from '@empower/directives/capitalize-first-letter.directive';
+import { NumericFormatDirective } from '@empower/directives/numeric-format.directive';
 import { OnlyNumbersDirective } from '@empower/directives/only-numbers.directive';
 import { UppercaseDirective } from '@empower/directives/uppercase.directive';
 import { ApisService } from '@empower/services/api-service/apis.service';
@@ -47,13 +48,14 @@ import { EmpowerUtilsService } from '@empower/services/utils';
         UppercaseDirective,
         CapitalizeFirstLetterDirective,
         OnlyNumbersDirective,
+        NumericFormatDirective,
     ],
     templateUrl: './concept-note.component.html',
     styleUrl: './concept-note.component.scss',
 })
-
 export class ConceptNoteComponent implements OnInit {
     configForm: UntypedFormGroup;
+    configErrorForm: UntypedFormGroup;
     conceptNoteForm: FormGroup;
     selectedFile: File | null = null;
     yearDifference: number | null = null;
@@ -80,17 +82,26 @@ export class ConceptNoteComponent implements OnInit {
             project_name: ['', Validators.required],
             programme: [''],
             project_nature: ['', Validators.required],
-            project_description: ['', [Validators.required, Validators.minLength(20)]],
-            project_background: ['', [Validators.required, Validators.minLength(20)]],
+            project_description: [
+                '',
+                [Validators.required, Validators.minLength(20)],
+            ],
+            project_background: [
+                '',
+                [Validators.required, Validators.minLength(20)],
+            ],
             exp_start_date: ['', Validators.required],
             exp_completion_date: ['', Validators.required],
             sector: ['', Validators.required],
             subsector: ['', Validators.required],
             estimated_cost: ['', Validators.required],
             lifespan: ['', Validators.required],
-            project_objective: ['', [Validators.required, Validators.minLength(20)]],
+            project_objective: [
+                '',
+                [Validators.required, Validators.minLength(20)],
+            ],
             costcentre: ['', Validators.required],
-            concept_note: ['']
+            concept_note: [''],
         });
 
         this.getSectors();
@@ -98,18 +109,18 @@ export class ConceptNoteComponent implements OnInit {
 
         // Build the config form
         this.configForm = this._formBuilder.group({
-            title: '323232332',
+            title: 'SUCCESS',
             message:
-                'Are you sure you want to remove this project permanently? <span class="font-medium">This action cannot be undone!</span>',
+                '<span class="font-medium">Concept note added successfully!</span>',
             icon: this._formBuilder.group({
                 show: true,
-                name: 'heroicons_outline:exclamation-triangle',
-                color: 'warn',
+                name: 'heroicons_solid:check',
+                color: 'success',
             }),
             actions: this._formBuilder.group({
                 confirm: this._formBuilder.group({
                     show: true,
-                    label: 'Print',
+                    label: 'OKAY',
                     color: 'primary',
                 }),
                 cancel: this._formBuilder.group({
@@ -117,7 +128,7 @@ export class ConceptNoteComponent implements OnInit {
                     label: 'Cancel',
                 }),
             }),
-            dismissible: true,
+            dismissible: false,
         });
     }
 
@@ -126,51 +137,81 @@ export class ConceptNoteComponent implements OnInit {
     // -----------------------------------------------------------------------------------------------------
 
     getCostCenters() {
-        this.apisService.get_private('settings/costcentre/').then((response: any) => {
-          console.log(">>>>>", response);
-        this.costCenters = response.data;
-        }, error => {
-          console.log('Error', error);
-        }).catch(error => {
-          console.log('Err', error);
-        });
-      }
-
+        this.apisService
+            .get_private('settings/costcentre/')
+            .then(
+                (response: any) => {
+                    console.log('>>>>>', response);
+                    this.costCenters = response.data;
+                },
+                (error) => {
+                    console.log('Error', error);
+                }
+            )
+            .catch((error) => {
+                console.log('Err', error);
+            });
+    }
 
     getSectors() {
-        this.apisService.get_private('settings/sector').then((response: any) => {
-          console.log(">>>>>", response);
-        this.sectors = response.data;
-        }, error => {
-          console.log('Error', error);
-        }).catch(error => {
-          console.log('Err', error);
-        });
-      }
+        this.apisService
+            .get_private('settings/sector')
+            .then(
+                (response: any) => {
+                    console.log('>>>>>', response);
+                    this.sectors = response.data;
+                },
+                (error) => {
+                    console.log('Error', error);
+                }
+            )
+            .catch((error) => {
+                console.log('Err', error);
+            });
+    }
 
-      onSectorSelected(event: any) {
+    onSectorSelected(event: any) {
         const selectedSectorId = event.value;
         // Your logic here to handle the selected sector
         console.log('Selected Sector ID:', selectedSectorId);
-        this.getSubSectors(selectedSectorId)
+        this.getSubSectors(selectedSectorId);
     }
 
-      getSubSectors(id:string) {
-        this.apisService.get_private(`settings/sector/detail/${id}`).then((response: any) => {
-          console.log(">>>>>", response);
-        this.subsectors = response.data.subsectors
+    getSubSectors(id: string) {
+        this.apisService
+            .get_private(`settings/sector/detail/${id}`)
+            .then(
+                (response: any) => {
+                    console.log('>>>>>', response);
+                    this.subsectors = response.data.subsectors;
+                },
+                (error) => {
+                    console.log('Error', error);
+                }
+            )
+            .catch((error) => {
+                console.log('Err', error);
+            });
+    }
 
-        }, error => {
-          console.log('Error', error);
-        }).catch(error => {
-          console.log('Err', error);
-        });
-      }
-
-
-    openConfirmationDialog(): void {
-        const dialogRef = this._empowerConfirmationService.open(
+    openConfirmationAlert(): void {
+        const dialogRef = this._empowerConfirmationService.openAlert(
             this.configForm.value
+        );
+        dialogRef.afterClosed().subscribe((result) => {
+            console.log(result);
+            this.router.navigateByUrl('/apps/projects/list');
+        });
+
+        setTimeout(() => {
+            dialogRef.close();
+            this.router.navigateByUrl('/apps/projects/list');
+        }, 2000);
+    }
+
+    openErrorAlert(): void {
+        const dialogRef = this._empowerConfirmationService.openAlert(
+            this.configErrorForm.value
         );
         dialogRef.afterClosed().subscribe((result) => {
             console.log(result);
@@ -222,22 +263,62 @@ export class ConceptNoteComponent implements OnInit {
     }
 
     saveChange() {
+        console.log('testingggg', this.conceptNoteForm.value.exp_start_date);
 
-        console.log("testiiing", this.conceptNoteForm.value)
+        this.conceptNoteForm.value.exp_start_date = formatDate(
+            this.conceptNoteForm.value.exp_start_date,
+            'yyyy-MM-dd',
+            'en'
+        );
+        console.log('testingggg2', this.conceptNoteForm.value.exp_start_date);
 
-        this.conceptNoteForm.value.exp_start_date = formatDate(this.conceptNoteForm.value.exp_start_date, 'yyyy-MM-dd', 'en');
-        this.conceptNoteForm.value.exp_completion_date = formatDate(this.conceptNoteForm.value.exp_completion_date, 'yyyy-MM-dd', 'en');
+        this.conceptNoteForm.value.exp_completion_date = formatDate(
+            this.conceptNoteForm.value.exp_completion_date,
+            'yyyy-MM-dd',
+            'en'
+        );
 
-        this.apisService.post_private('projects/conceptnote/create', this.conceptNoteForm.value).then((data: any) => {
-        //   if (data && data.status && data.status == 200 && data.data) {
-        //     console.log(data);
-        //   }
-        console.log(data);
-        this.router.navigateByUrl('/apps/projects/list');
+        console.log('testingggg3', this.conceptNoteForm.value);
 
-        }).catch((error) => {
-          console.log(error);
-        });
-        
-      }
+        this.apisService
+            .post_private(
+                'projects/conceptnote/create',
+                this.conceptNoteForm.value
+            )
+            .then((data: any) => {
+                //   if (data && data.status && data.status == 200 && data.data) {
+                //     console.log(data);
+                //   }
+                console.log(data);
+                this.openConfirmationAlert();
+            })
+            .catch((error) => {
+
+                // Build the config form
+                this.configErrorForm = this._formBuilder.group({
+                    title: `ERROR ${error.error.status_code}`,
+                    message:
+                        `<span class="font-medium">${error.error.message}, CONCEPT NOTE NOT SAVED!</span>`,
+                    icon: this._formBuilder.group({
+                        show: true,
+                        name: 'heroicons_solid:exclamation-triangle',
+                        color: 'error',
+                    }),
+                    actions: this._formBuilder.group({
+                        confirm: this._formBuilder.group({
+                            show: true,
+                            label: 'OKAY',
+                            color: 'primary',
+                        }),
+                        cancel: this._formBuilder.group({
+                            show: true,
+                            label: 'Cancel',
+                        }),
+                    }),
+                    dismissible: true,
+                });
+
+                this.openErrorAlert();
+            });
+    }
 }

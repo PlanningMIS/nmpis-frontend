@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EmpowerConfirmationConfig } from '@empower/services/confirmation/confirmation.types';
 import { EmpowerConfirmationDialogComponent } from '@empower/services/confirmation/dialog/dialog.component';
 import { merge } from 'lodash-es';
+import { EmpowerConfirmationAlertComponent } from './alert/alert.component';
 
 @Injectable({ providedIn: 'root' })
 export class EmpowerConfirmationService {
@@ -41,6 +42,21 @@ export class EmpowerConfirmationService {
 
         // Open the dialog
         return this._matDialog.open(EmpowerConfirmationDialogComponent, {
+            autoFocus: false,
+            disableClose: !userConfig.dismissible,
+            data: userConfig,
+            panelClass: 'empower-confirmation-dialog-panel',
+        });
+    }
+
+    openAlert(
+        config: EmpowerConfirmationConfig = {}
+    ): MatDialogRef<EmpowerConfirmationDialogComponent> {
+        // Merge the user config with the default config
+        const userConfig = merge({}, this._defaultConfig, config);
+
+        // Open the dialog
+        return this._matDialog.open(EmpowerConfirmationAlertComponent, {
             autoFocus: false,
             disableClose: !userConfig.dismissible,
             data: userConfig,
