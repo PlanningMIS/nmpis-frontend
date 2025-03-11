@@ -117,7 +117,7 @@
                                 </th>
                                 <td mat-cell *matCellDef="let project">
                                     <span class="whitespace-nowrap pr-6">
-                                        {{ project.project_nature }}
+                                        {{ project.project_nature.name }}
                                     </span>
                                 </td>
                             </ng-container>
@@ -188,18 +188,23 @@
                                                         "></mat-icon>
                                         </button>
                                         <mat-menu #budgetMenu="matMenu">
-                                            <button mat-menu-item>
-                                                Edit
-                                            </button>
                                             <button (click)="
                                                             goToCriteriaAccessment()
                                                         " mat-menu-item>
-                                                Criteria Accessment
+                                                Criteria Assessment
+                                            </button>
+                                            <button (click)="evaluateConceptNote()" mat-menu-item>
+                                                Evaluate
+                                            </button>
+                                            <button (click)="summaryProject()" mat-menu-item>
+                                                Summarize
+                                            </button>
+                                            <button (click)="viewInDetails()" mat-menu-item>
+                                                View In Details
                                             </button>
                                             <button mat-menu-item>
-                                                Update
+                                                Accept
                                             </button>
-
                                         </mat-menu>
                                     </div>
                                 </td>
@@ -227,7 +232,7 @@
                             class="z-10 border-b bg-gray-50 dark:bg-transparent sm:absolute sm:inset-x-0 sm:bottom-0 sm:border-b-0 sm:border-t"
                             [ngClass]="{
                                         'pointer-events-none': isLoading,
-                                    }" [pageSizeOptions]="[5, 10, 25, 100]"
+                                    }" [pageSizeOptions]="[10, 25, 50, 100]"
                             [showFirstLastButtons]="true"></mat-paginator>
                     </div>
                 </div>

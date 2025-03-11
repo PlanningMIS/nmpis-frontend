@@ -50,6 +50,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     selectedProject: string = 'NMPIS Dashboard';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
+    user:any;
     /**
      * Constructor
      */
@@ -66,6 +67,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.user = JSON.parse(localStorage.getItem("user"))
+
         // Get the data
         this._projectService.data$
             .pipe(takeUntil(this._unsubscribeAll))

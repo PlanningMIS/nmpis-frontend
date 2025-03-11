@@ -1,0 +1,92 @@
+<div class="relative flex h-full w-full flex-col">
+    <!-- Dismiss button -->
+    <!-- @if (true) {
+        <div class="absolute right-0 top-0 pr-4 pt-4">
+            <button mat-icon-button [matDialogClose]="undefined">
+                <mat-icon
+                    class="text-secondary"
+                    [svgIcon]="'heroicons_outline:x-mark'"
+                ></mat-icon>
+            </button>
+        </div>
+    } -->
+
+
+    <div class="loader" id="loader">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+            <style>
+                /* Blinking Eyes */
+                @keyframes blink {
+                    0%, 100% { fill: white; }
+                    50% { fill: black; }
+                }
+        
+                /* Moving Antenna */
+                @keyframes bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-3px); }
+                }
+        
+                /* Floating Motion */
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-2px); }
+                }
+        
+                .eye { animation: blink 1.5s infinite; }
+                .antenna { animation: bounce 1s infinite; }
+                .robot-body { animation: float 3s infinite ease-in-out; }
+            </style>
+        
+            <!-- Robot Head -->
+            <rect x="25" y="20" width="50" height="40" rx="8" ry="8" fill="#4A90E2" stroke="#2C3E50" stroke-width="2" class="robot-body"/>
+        
+            <!-- Eyes (Blinking) -->
+            <circle cx="35" cy="35" r="5" fill="white" stroke="#2C3E50" stroke-width="2" class="eye"/>
+            <circle cx="65" cy="35" r="5" fill="white" stroke="#2C3E50" stroke-width="2" class="eye"/>
+        
+            <!-- Mouth -->
+            <rect x="40" y="45" width="20" height="5" rx="2" ry="2" fill="#2C3E50"/>
+        
+            <!-- Antenna (Bouncing) -->
+            <line x1="50" y1="10" x2="50" y2="20" stroke="#2C3E50" stroke-width="2" class="antenna"/>
+            <circle cx="50" cy="8" r="3" fill="red" class="antenna"/>
+        
+            <!-- Body (Floating) -->
+            <rect x="30" y="60" width="40" height="30" rx="5" ry="5" fill="#4A90E2" stroke="#2C3E50" stroke-width="2" class="robot-body"/>
+        
+            <!-- Arms -->
+            <rect x="15" y="60" width="10" height="20" rx="3" ry="3" fill="#4A90E2" stroke="#2C3E50" stroke-width="2"/>
+            <rect x="75" y="60" width="10" height="20" rx="3" ry="3" fill="#4A90E2" stroke="#2C3E50" stroke-width="2"/>
+        
+            <!-- Legs -->
+            <rect x="35" y="90" width="10" height="10" rx="2" ry="2" fill="#2C3E50"/>
+            <rect x="55" y="90" width="10" height="10" rx="2" ry="2" fill="#2C3E50"/>
+        </svg>
+        
+        <h2 class="font-extrabold">PC AI Reviewing...</h2>
+    </div>
+
+    @if(isContentVisible){
+         <!-- Content -->
+        <div class="flex flex-auto flex-col items-start p-8 pb-6 overflow-y-auto max-h-[70vh]" *ngIf="isContentVisible">
+            <div #messageContainer class="p-4 bg-gray-100 rounded-lg">
+                <div *ngIf="displayedText" class="text-gray-900 text-lg" [innerHTML]="displayedText"></div>
+                <div *ngIf="isLoading" class="h-6 w-80 bg-gray-300 animate-pulse rounded mt-2"></div>
+            </div>
+    
+            <div class="mt-4 flex items-center border w-full rounded-lg p-2 bg-white shadow-md">
+                <input [(ngModel)]="userInput" type="text" placeholder="Ask a question..." class="flex-1 p-2 outline-none text-gray-700">
+                <button (click)="sendMessage()" class="ml-2 p-2 text-white rounded-full">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </div>    
+        </div>
+    }
+
+    <!-- Actions -->
+    <div class="flex items-center justify-center space-x-3 bg-gray-50 px-6 py-4 dark:bg-black dark:bg-opacity-10">
+        <button mat-fab extended [color]="'primary'" [matDialogClose]="'confirmed'"> ACCEPT </button>
+        <button mat-fab extended [color]="'warn'" [matDialogClose]="'confirmed'"> REJECT </button>
+    </div>
+</div>

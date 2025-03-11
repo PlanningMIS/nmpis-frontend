@@ -13,7 +13,6 @@ import { NavigationService } from 'app/core/navigation/navigation.service';
 import { Navigation } from 'app/core/navigation/navigation.types';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
-import { LanguagesComponent } from 'app/layout/common/languages/languages.component';
 import { NotificationsComponent } from 'app/layout/common/notifications/notifications.component';
 import { SearchComponent } from 'app/layout/common/search/search.component';
 import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
@@ -26,24 +25,24 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
-        EmpowerLoadingBarComponent,
-        EmpowerVerticalNavigationComponent,
-        NotificationsComponent,
-        UserComponent,
-        MatIconModule,
-        MatButtonModule,
-        LanguagesComponent,
-        EmpowerFullscreenComponent,
-        SearchComponent,
-        ShortcutsComponent,
-        RouterOutlet,
-    ],
+    EmpowerLoadingBarComponent,
+    EmpowerVerticalNavigationComponent,
+    NotificationsComponent,
+    UserComponent,
+    MatIconModule,
+    MatButtonModule,
+    EmpowerFullscreenComponent,
+    SearchComponent,
+    RouterOutlet
+],
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy {
     isScreenSmall: boolean;
     navigation: Navigation;
-    user: User;
+    // user: User;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
+
+    user:any;
 
     /**
      * Constructor
@@ -76,6 +75,10 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+
+        this.user = JSON.parse(localStorage.getItem("user"))
+
+
         // Subscribe to navigation data
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -84,11 +87,11 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy {
             });
 
         // Subscribe to the user service
-        this._userService.user$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((user: User) => {
-                this.user = user;
-            });
+        // this._userService.user$
+        //     .pipe(takeUntil(this._unsubscribeAll))
+        //     .subscribe((user: User) => {
+        //         this.user = user;
+        //     });
 
         // Subscribe to media changes
         this._empowerMediaWatcherService.onMediaChange$

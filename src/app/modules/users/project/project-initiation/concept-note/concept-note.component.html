@@ -72,16 +72,21 @@
                     <div class="grid w-full grid-cols-2 gap-4">
                         <mat-form-field class="gt-xs:pr-3 flex-auto">
                             <mat-label>Programme Name</mat-label>
-                            <input
-                                matInput
+                            <mat-select
                                 [formControlName]="'programme'"
                                 [placeholder]="'Programme Name'"
-                            />
-                            <mat-icon
-                                class="icon-size-5"
-                                matPrefix
-                                [svgIcon]="'heroicons_solid:pencil'"
-                            ></mat-icon>
+                            >
+                            @for (
+                                programme of programmes;
+                                track programme
+                                ) {
+                                <mat-option [value]="programme.id">{{
+                                    programme.name
+                                    }}</mat-option>
+                                } @empty {
+                                <li>There are no items.</li>
+                                }
+                            </mat-select>
                         </mat-form-field>
 
                         <mat-form-field class="gt-xs:pr-3 flex-auto">
@@ -90,31 +95,16 @@
                                 [formControlName]="'project_nature'"
                                 [placeholder]="'Project Nature'"
                             >
-                                <mat-option value="CONSTRUCTION"
-                                    >CONSTRUCTION</mat-option
-                                >
-                                <mat-option value="IT_SOFTWARE"
-                                    >IT SOFTWARE</mat-option
-                                >
-                                <mat-option value="RESEARCH_DEVELOPMENT"
-                                    >RESEARCH DEVELOPMENT</mat-option
-                                >
-                                <mat-option value="ENVIRONMENTAL"
-                                    >ENVIRONMENTAL</mat-option
-                                >
-                                <mat-option value="SERVICE_BASED"
-                                    >SERVICE BASED</mat-option
-                                >
-                                <mat-option value="FINANCIAL"
-                                    >FINANCIAL</mat-option
-                                >
-                                <mat-option value="COMMUNITY"
-                                    >COMMUNITY</mat-option
-                                >
-                                <mat-option value="MARKETING"
-                                    >MARKETING</mat-option
-                                >
-                                
+                            @for (
+                                projectNature of projectNature;
+                                track projectNature
+                                ) {
+                                <mat-option [value]="projectNature.id">{{
+                                    projectNature.name
+                                    }}</mat-option>
+                                } @empty {
+                                <li>There are no items.</li>
+                                }
                             </mat-select>
                         </mat-form-field>
 
@@ -328,8 +318,8 @@
                                 costCenter of costCenters;
                                 track costCenter
                                 ) {
-                                <mat-option [value]="costCenter.id">{{
-                                    costCenter.description
+                                <mat-option [value]="costCenter.costcentre_no">{{
+                                    costCenter.name
                                     }}</mat-option>
                                 } @empty {
                                 <li>There are no items.</li>

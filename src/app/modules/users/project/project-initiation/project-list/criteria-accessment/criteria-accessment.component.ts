@@ -11,12 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { EmpowerAIReviewComponent } from '@empower/services/ai/review/ai-review.component';
 import { EmpowerConfirmationService } from '@empower/services/confirmation';
 
 @Component({
@@ -37,6 +39,7 @@ import { EmpowerConfirmationService } from '@empower/services/confirmation';
         MatCheckboxModule,
         MatRadioModule,
         MatDatepickerModule,
+        MatDialogModule
     ],
   templateUrl: './criteria-accessment.component.html',
   styleUrl: './criteria-accessment.component.scss'
@@ -50,7 +53,9 @@ export class CriteriaAccessmentComponent implements OnInit {
     /**
      * Constructor
      */
-    constructor(private _formBuilder: UntypedFormBuilder, private _empowerConfirmationService: EmpowerConfirmationService,
+    constructor(private _formBuilder: UntypedFormBuilder,
+         private _empowerConfirmationService: EmpowerConfirmationService,
+         private matDialog: MatDialog
     ) { }
 
     // -----------------------------------------------------------------------------------------------------
@@ -147,5 +152,56 @@ export class CriteriaAccessmentComponent implements OnInit {
             console.log(result);
         });
     }
+
+    reviewNPMIS() {
+        this.matDialog.open(EmpowerAIReviewComponent, {
+          autoFocus: false,
+          panelClass: 'empower-confirmation-dialog-panel',
+        });
+      }
+
+      highQualityLivelihood:any = false;
+      goodGovernance:any = false;
+
+      onTDVChange(event: MatSelectChange) {
+        console.log('Selected options:', event.value);
+        // Your logic here, for example:
+        if (event.value.includes('High Quality Livelihood')) {
+          console.log('High Quality Livelihood selected!');
+          this.highQualityLivelihood = true
+          // call another function or update UI
+        }
+
+        if (event.value.includes('Good Governance and the Rule of Law')) {
+          console.log('Good Governance and the Rule of Law selected!');
+          this.goodGovernance = true
+          // call another function or update UI
+        }
+      }
+
+
+      enhancingProductionProductivity:any = false
+
+      onFYDPChange(event: MatSelectChange) {
+        console.log('Selected options:', event.value);
+        // Your logic here, for example:
+        if (event.value.includes('Enhancing Production and Productivity')) {
+          console.log('Enhancing Production and Productivity selected!');
+          this.enhancingProductionProductivity = true
+          // call another function or update UI
+        }
+      }
+      
+      endPoverty:any = false
+
+      onSDGChange(event: MatSelectChange) {
+        console.log('Selected options:', event.value);
+        // Your logic here, for example:
+        if (event.value.includes('End poverty in all its forms everywhere')) {
+          console.log('End poverty in all its forms everywhere selected!');
+          this.endPoverty = true
+          // call another function or update UI
+        }
+      }
 
 }

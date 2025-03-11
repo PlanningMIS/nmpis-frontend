@@ -62,6 +62,9 @@ export class ConceptNoteComponent implements OnInit {
 
     costCenters: any;
     sectors: any;
+    programmes: any;
+    projectNature: any;
+
     subsectors: any;
 
     constructor(
@@ -78,6 +81,7 @@ export class ConceptNoteComponent implements OnInit {
     // -----------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
+
         this.conceptNoteForm = this._formBuilder.group({
             project_name: ['', Validators.required],
             programme: [''],
@@ -104,6 +108,8 @@ export class ConceptNoteComponent implements OnInit {
             concept_note: [''],
         });
 
+        this.getProgrammes();
+        this.getProjectNature();
         this.getSectors();
         this.getCostCenters();
 
@@ -141,7 +147,7 @@ export class ConceptNoteComponent implements OnInit {
             .get_private('settings/costcentre/')
             .then(
                 (response: any) => {
-                    console.log('>>>>>', response);
+                    console.log('cost center>>>>>', response);
                     this.costCenters = response.data;
                 },
                 (error) => {
@@ -184,6 +190,40 @@ export class ConceptNoteComponent implements OnInit {
                 (response: any) => {
                     console.log('>>>>>', response);
                     this.subsectors = response.data.subsectors;
+                },
+                (error) => {
+                    console.log('Error', error);
+                }
+            )
+            .catch((error) => {
+                console.log('Err', error);
+            });
+    }
+
+    getProgrammes() {
+        this.apisService
+            .get_private('settings/programme/')
+            .then(
+                (response: any) => {
+                    console.log('>>>>>', response);
+                    this.programmes = response.data;
+                },
+                (error) => {
+                    console.log('Error', error);
+                }
+            )
+            .catch((error) => {
+                console.log('Err', error);
+            });
+    }
+
+    getProjectNature() {
+        this.apisService
+            .get_private('settings/projectnature/')
+            .then(
+                (response: any) => {
+                    console.log('>>>>>', response);
+                    this.projectNature = response.data;
                 },
                 (error) => {
                     console.log('Error', error);
@@ -263,22 +303,18 @@ export class ConceptNoteComponent implements OnInit {
     }
 
     saveChange() {
-        console.log('testingggg', this.conceptNoteForm.value.exp_start_date);
 
         this.conceptNoteForm.value.exp_start_date = formatDate(
             this.conceptNoteForm.value.exp_start_date,
             'yyyy-MM-dd',
             'en'
         );
-        console.log('testingggg2', this.conceptNoteForm.value.exp_start_date);
 
         this.conceptNoteForm.value.exp_completion_date = formatDate(
             this.conceptNoteForm.value.exp_completion_date,
             'yyyy-MM-dd',
             'en'
         );
-
-        console.log('testingggg3', this.conceptNoteForm.value);
 
         this.apisService
             .post_private(

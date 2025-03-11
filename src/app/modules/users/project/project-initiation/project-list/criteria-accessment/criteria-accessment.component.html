@@ -14,7 +14,7 @@
                         class="text-secondary icon-size-5"
                         [svgIcon]="'heroicons_mini:chevron-right'"
                     ></mat-icon>
-                    <a class="ml-1 text-primary-500">Accessment</a>
+                    <a class="ml-1 text-primary-500">Assessment</a>
                 </div>
             </div>
             <!-- Title -->
@@ -22,7 +22,7 @@
                 <h2
                     class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
                 >
-                    Criteria Accessment
+                    Criteria Assessment
                 </h2>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <div class="flex-auto p-6 sm:p-10">
         <div class="max-w-full">
             <!-- Horizontal stepper -->
-            <div class="mb-8 mt-3 text-3xl font-bold">Criteria Accessment</div>
+            <div class="mb-8 mt-3 text-3xl font-bold">Criteria Assessment</div>
 
             <form
                 class="bg-card overflow-hidden rounded p-4 shadow"
@@ -102,7 +102,8 @@
                                     [placeholder]="
                                         'Tanzania Development Vision (TDV 2025)'
                                     "
-                                   multiple >
+                                   multiple 
+                                   (selectionChange)="onTDVChange($event)">
                                     <mat-option value="High Quality Livelihood"
                                         >High Quality Livelihood</mat-option
                                     >
@@ -115,6 +116,31 @@
                                 </mat-select>
                             </mat-form-field>
 
+                            @if(highQualityLivelihood){
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>High Quality Livelihood</mat-label>
+                                    <textarea
+                                        matInput
+                                        rows="6"
+                                        placeholder="Explain High Quality Livelihood"
+                                        appCapitalizeFirstLetter
+                                    ></textarea>
+                                </mat-form-field>
+                            }
+
+                            @if(goodGovernance){
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>Good Governance and the Rule of Law</mat-label>
+                                    <textarea
+                                        matInput
+                                        rows="6"
+                                        placeholder="Good Governance and the Rule of Law"
+                                        appCapitalizeFirstLetter
+                                    ></textarea>
+                                </mat-form-field>
+                            }
+
+
                             <mat-form-field class="gt-xs:pr-3 flex-auto">
                                 <mat-label
                                     >Third Five-Year Development Plan (FYDP
@@ -125,7 +151,8 @@
                                     [placeholder]="
                                         'Third Five-Year Development Plan (FYDP III)'
                                     "
-                                    multiple>
+                                    multiple
+                                    (selectionChange)="onFYDPChange($event)">
                                     <mat-option value="Enhancing Production and Productivity"
                                         >Enhancing Production and Productivity</mat-option
                                     >
@@ -147,6 +174,18 @@
                                 </mat-select>
                             </mat-form-field>
 
+                            @if(enhancingProductionProductivity){
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>Enhancing Production and Productivity</mat-label>
+                                    <textarea
+                                        matInput
+                                        rows="6"
+                                        placeholder="Enhancing Production and Productivity"
+                                        appCapitalizeFirstLetter
+                                    ></textarea>
+                                </mat-form-field>
+                            }
+
                             <mat-form-field class="gt-xs:pr-3 flex-auto">
                                 <mat-label
                                     >Sustainable Development Goals
@@ -157,7 +196,8 @@
                                     [placeholder]="
                                         'Sustainable Development Goals (SDG)'
                                     "
-                                 multiple >
+                                 multiple 
+                                 (selectionChange)="onSDGChange($event)">
                                     <mat-option value="End poverty in all its forms everywhere"
                                         >End poverty in all its forms everywhere</mat-option
                                     >
@@ -187,6 +227,18 @@
                                     >
                                 </mat-select>
                             </mat-form-field>
+
+                            @if(endPoverty){
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>End poverty in all its forms everywhere</mat-label>
+                                    <textarea
+                                        matInput
+                                        rows="6"
+                                        placeholder="End poverty in all its forms everywhere"
+                                        appCapitalizeFirstLetter
+                                    ></textarea>
+                                </mat-form-field>
+                            }
 
                             <mat-form-field class="gt-xs:pr-3 flex-auto">
                                 <mat-label>Agenda 2063</mat-label>
@@ -220,6 +272,15 @@
                         </div>
 
                         <div class="flex justify-end">
+                            <button
+                                class="px-8"
+                                mat-flat-button
+                                [color]="'primary'"
+                                type="button"
+                                (click)="reviewNPMIS()"
+                            >
+                                Save
+                            </button>
                             <button
                                 class="px-8"
                                 mat-flat-button
@@ -561,7 +622,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain technology and System Integration
                                    </mat-label
                                 >
@@ -583,7 +644,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain technical Skills and
                                     Expertise</mat-label
                                 >
@@ -605,7 +666,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain technical Resource Availability
                                     (materials, tools, equipment and
                                     technology)</mat-label
@@ -628,7 +689,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain Regulatory and Standards Compliance
                                     of the respective industry</mat-label
                                 >
@@ -650,7 +711,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain facilitation Infrastructure
                                     Requirements</mat-label
                                 >
@@ -672,7 +733,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain scalability and
                                     flexibility*</mat-label
                                 >
@@ -694,7 +755,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain Technical Maintenance
                                     cycle</mat-label
                                 >
@@ -716,7 +777,7 @@
 
                         <div class="w-full">
                             <mat-form-field class="w-full">
-                                <mat-label class="text-lg font-bold"
+                                <mat-label class="text-lg "
                                     >Explain Cost Analysis of technical
                                     components</mat-label
                                 >

@@ -16,7 +16,6 @@ import { provideAuth } from 'app/core/auth/auth.provider';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { mockApiServices } from 'app/mock-api';
 import { firstValueFrom } from 'rxjs';
-import { TranslocoHttpLoader } from './core/transloco/transloco.http-loader';
 import { provideState, provideStore } from '@ngrx/store';
 import { counterReducer } from './states/counter/counter.reducer';
 import { provideEffects } from '@ngrx/effects';
@@ -65,27 +64,6 @@ export const appConfig: ApplicationConfig = {
                 },
             },
         },
-
-        // Transloco Config
-        provideTransloco({
-            config: {
-                availableLangs: [
-                    {
-                        id: 'en',
-                        label: 'English',
-                    },
-                    {
-                        id: 'tr',
-                        label: 'Swahili',
-                    },
-                ],
-                defaultLang: 'en',
-                fallbackLang: 'en',
-                reRenderOnLangChange: true,
-                prodMode: true,
-            },
-            loader: TranslocoHttpLoader,
-        }),
         {
             // Preload the default language before the app starts to prevent empty/jumping content
             provide: APP_INITIALIZER,
